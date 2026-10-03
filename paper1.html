@@ -160,6 +160,16 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
     .rtools .lbl{display:none}
   }
   @media print{.rtools{display:none}}
+  /* ===== continue reading ===== */
+  .resume{position:fixed;left:18px;bottom:18px;z-index:600;display:none;align-items:center;gap:8px;
+    background:var(--ui-bg);border:1px solid var(--ui-line);border-radius:999px;padding:9px 15px;box-shadow:0 10px 30px rgba(0,0,0,.22);
+    font-family:var(--sans,system-ui,sans-serif);font-size:12px;font-weight:600;letter-spacing:.01em;color:var(--ui-ink);cursor:pointer;max-width:calc(100vw - 24px)}
+  .resume.show{display:inline-flex}
+  .resume:hover{background:var(--ui-hover)}
+  .resume .ri{font-size:14px;line-height:1}
+  .resume .rpct{opacity:.65;font-variant-numeric:tabular-nums}
+  @media (max-width:560px){ .resume{left:10px;bottom:10px;padding:9px 12px} .resume .lbl{display:none} }
+  @media print{.resume{display:none!important}}
 
 </style>
 </head>
@@ -319,6 +329,7 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
   <span class="sep"></span>
   <button class="rbtn" id="tRead" type="button" title="Reading mode" aria-pressed="false"><span class="ic">&#9636;</span><span class="lbl">Reading</span></button>
 </div>
+<button class="resume" id="resume" type="button" title="Continue where you left off"><span class="ri">&#8634;</span><span class="lbl">Continue reading</span><span class="rpct"></span></button>
 <script>
 (function(){
   var root=document.documentElement, body=document.body;
@@ -355,6 +366,30 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
   function applyRead(){ body.classList.toggle('reading',r); if(tRead){tRead.classList.toggle('on',r);tRead.setAttribute('aria-pressed',r?'true':'false');} }
   applyRead();
   if(tRead) tRead.addEventListener('click',function(){ r=!r; localStorage.setItem(KEY_R,r?'1':'0'); applyRead(); });
+})();
+</script>
+<script>
+(function(){
+  var btn=document.getElementById('resume');
+  if(!btn) return;
+  var KEY='msk-pos:'+location.pathname;
+  function maxY(){ return Math.max(0, document.documentElement.scrollHeight - window.innerHeight); }
+  var saved=parseInt(localStorage.getItem(KEY)||'0',10);
+  var initialY=window.scrollY, showed=false;
+  if(saved>500 && window.scrollY<100 && saved < maxY()-80){
+    var pct=Math.min(99, Math.round(saved/Math.max(1,maxY())*100));
+    var p=btn.querySelector('.rpct'); if(p) p.textContent=' '+pct+'%';
+    btn.classList.add('show'); showed=true;
+  }
+  btn.addEventListener('click',function(){ window.scrollTo({top:saved,behavior:'smooth'}); btn.classList.remove('show'); showed=false; });
+  var t=null;
+  function save(){ try{ localStorage.setItem(KEY,String(Math.round(window.scrollY))); }catch(e){} }
+  window.addEventListener('scroll',function(){
+    if(showed && Math.abs(window.scrollY-initialY)>60){ btn.classList.remove('show'); showed=false; }
+    if(t) clearTimeout(t); t=setTimeout(save,300);
+  },{passive:true});
+  window.addEventListener('pagehide',save);
+  window.addEventListener('beforeunload',save);
 })();
 </script>
 </body>

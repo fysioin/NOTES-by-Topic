@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concluding Lumbar Disc Herniation on Screening · MSK Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f2e7; --paper2:#efe8d8; --card:#fdfbf5;
+    --ink:#2b2620; --dim:#7a7268; --rule:#e3dbca;
+    --navy:#1e3a5f; --accent:#a8621e; --hl:#f6e7a8; --key:#fbf3df; --keyline:#c58a2e;
+    --serif:'Literata','Iowan Old Style',Palatino,Georgia,serif;
+    --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--serif); font-size:19.5px; line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:400;transition:width .1s linear}
+  .topbar{position:sticky;top:0;z-index:300;background:rgba(247,242,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+  .topbar-in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 22px}
+  .back{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--dim);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .back:hover{color:var(--navy)}
+  .topbar .doc{font-family:var(--sans);font-size:12px;color:var(--dim);margin-left:auto;letter-spacing:.02em}
+  .wrap{max-width:760px;margin:0 auto;padding:34px 22px 90px}
+  header.doc-head{padding:22px 0 26px;border-bottom:2px solid var(--rule);margin-bottom:8px}
+  .kicker{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-family:var(--serif);font-size:clamp(27px,4.6vw,38px);line-height:1.2;font-weight:600;letter-spacing:-.01em;margin:0 0 14px;color:var(--navy)}
+  .sub{font-family:var(--sans);font-size:13px;color:var(--dim);line-height:1.6}
+  h2{font-family:var(--serif);font-size:1.42rem;font-weight:600;color:var(--navy);margin:44px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+  h3{font-family:var(--serif);font-size:1.12rem;font-weight:600;margin:26px 0 6px;color:var(--ink)}
+  h4{font-family:var(--sans);font-size:.9rem;font-weight:600;letter-spacing:.02em;margin:18px 0 4px;color:var(--accent);text-transform:uppercase}
+  p{margin:0 0 15px}
+  ul,ol{margin:0 0 16px;padding-left:24px}
+  li{margin:0 0 9px;padding-left:4px}
+  li::marker{color:var(--accent)}
+  b,strong{font-weight:600}
+  mark{background:var(--hl);padding:1px 5px;border-radius:3px;font-weight:600;color:var(--ink)}
+  .key{background:var(--key);border-left:4px solid var(--keyline);padding:14px 18px;margin:20px 0;border-radius:6px;font-size:.97rem;line-height:1.66}
+  .key b{color:var(--navy)}
+  .g{border-bottom:1.5px dotted var(--accent);cursor:help;padding-bottom:.5px;transition:background .15s}
+  .g:hover{background:rgba(168,98,30,.10)}
+  .g:focus{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+  #pop{position:absolute;z-index:500;max-width:330px;width:max-content;background:#231f19;color:#f3ece0;border-radius:12px;padding:14px 17px 15px;box-shadow:0 16px 44px rgba(0,0,0,.34);font-family:var(--sans);font-size:13.5px;line-height:1.55;opacity:0;transform:translateY(6px) scale(.98);pointer-events:none;transition:opacity .16s ease,transform .16s ease}
+  #pop.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+  #pop .pt{display:block;font-family:var(--serif);font-weight:600;font-size:15px;color:#f0c98a;margin-bottom:5px;text-transform:capitalize}
+  #pop .pd{display:block}
+  #pop .arrow{position:absolute;width:12px;height:12px;background:#231f19;transform:rotate(45deg)}
+  figure{margin:26px 0;text-align:center}
+  svg{width:100%;height:auto;background:var(--card);border:1px solid var(--rule);border-radius:10px}
+  figcaption{font-family:var(--sans);font-size:12.5px;color:var(--dim);margin-top:9px;font-style:italic;line-height:1.5}
+  .tbl-wrap{overflow-x:auto;margin:18px 0 24px;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+  table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px}
+  th,td{border-bottom:1px solid var(--rule);padding:10px 13px;text-align:left;vertical-align:top}
+  th{background:var(--navy);color:#fff;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  tbody tr:nth-child(even) td{background:rgba(30,58,95,.035)}
+  tbody tr:last-child td{border-bottom:none}
+  .src{font-family:var(--sans);font-size:12px;color:var(--dim);margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;line-height:1.6}
+  .next{display:flex;justify-content:space-between;gap:14px;margin-top:34px}
+  .next a{font-family:var(--sans);font-size:13px;color:var(--navy);text-decoration:none;border:1px solid var(--rule);border-radius:10px;padding:12px 18px;background:var(--card)}
+  .next a:hover{border-color:var(--accent);color:var(--accent)}
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#191919;--paper2:#222;--card:#222;--ink:#e8e2d6;--dim:#a49b8b;--rule:#34302a;--navy:#a9c4e0;--accent:#e0a45c;--hl:#5a4d18;--key:#262117;--keyline:#b9852f}
+    .topbar{background:rgba(25,25,25,.92)}
+    #pop{background:#f3ece0;color:#231f19}
+    #pop .pt{color:#8a5a10}
+    #pop .arrow{background:#f3ece0}
+  }
+  @media (max-width:560px){ body{font-size:18.5px} .wrap{padding:24px 18px 70px} }
+  @media print{.topbar,.progress,#pop,.next{display:none}body{background:#fff}}
+  /* ===== manual dark mode ===== */
+  html[data-theme="light"]{--paper:#f7f2e7;--paper2:#efe8d8;--card:#fdfbf5;--ink:#2b2620;--dim:#7a7268;--rule:#e3dbca;--navy:#1e3a5f;--accent:#a8621e;--hl:#f6e7a8;--key:#fbf3df;--keyline:#c58a2e}
+  html[data-theme="dark"]{--paper:#191919;--paper2:#222;--card:#222;--ink:#e8e2d6;--dim:#a49b8b;--rule:#34302a;--navy:#a9c4e0;--accent:#e0a45c;--hl:#5a4d18;--key:#262117;--keyline:#b9852f}
+  html[data-theme="light"] .topbar{background:rgba(247,242,231,.92)}
+  html[data-theme="dark"] .topbar{background:rgba(25,25,25,.92)}
+  html[data-theme="light"] #pop{background:#231f19;color:#f3ece0}
+  html[data-theme="dark"] #pop{background:#f3ece0;color:#231f19}
+  html[data-theme="light"] #pop .pt{color:#f0c98a}
+  html[data-theme="dark"] #pop .pt{color:#8a5a10}
+  html[data-theme="light"] #pop .arrow{background:#231f19}
+  html[data-theme="dark"] #pop .arrow{background:#f3ece0}
+  html[data-theme="dark"] th{background:#2b3a4a;color:#eef1f6}
+  @media (prefers-color-scheme:dark){ html:not([data-theme="light"]) th{background:#2b3a4a;color:#eef1f6} }
+  /* ===== fit to page ===== */
+  body.fit .wrap{max-width:min(96vw,1200px)}
+  /* ===== reading mode ===== */
+  body.reading .topbar{display:none}
+  body.reading .wrap{max-width:1000px}
+  /* ===== references ===== */
+  .refbox{margin-top:34px;background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:20px 22px}
+  .refbox .rb-t{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .refbox .rb-p{font-family:var(--sans);font-size:13.5px;color:var(--dim);margin:6px 0 14px;line-height:1.55}
+  .refbox .rb-actions{display:flex;flex-wrap:wrap;gap:10px}
+  .refbox a{font-family:var(--sans);font-size:13px;font-weight:600;text-decoration:none;border-radius:9px;padding:10px 16px;border:1px solid var(--rule)}
+  .refbox a.rb-open{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .refbox a.rb-open:hover{opacity:.92}
+  .refbox a.rb-dl{color:var(--navy)}
+  .refbox a.rb-dl:hover{border-color:var(--accent);color:var(--accent)}
+  /* ===== reading controls (toolbar) ===== */
+  :root{--ui-bg:#ffffff;--ui-ink:#1f2a37;--ui-line:rgba(20,30,50,.16);--ui-hover:rgba(20,30,50,.07);--ui-on:#e9f0f8}
+  @media (prefers-color-scheme:dark){:root{--ui-bg:#22242c;--ui-ink:#ece6da;--ui-line:rgba(255,255,255,.18);--ui-hover:rgba(255,255,255,.09);--ui-on:#2c3a4a}}
+  html[data-theme="dark"]{--ui-bg:#22242c;--ui-ink:#ece6da;--ui-line:rgba(255,255,255,.18);--ui-hover:rgba(255,255,255,.09);--ui-on:#2c3a4a}
+  html[data-theme="light"]{--ui-bg:#ffffff;--ui-ink:#1f2a37;--ui-line:rgba(20,30,50,.16);--ui-hover:rgba(20,30,50,.07);--ui-on:#e9f0f8}
+  .rtools{position:fixed;right:18px;bottom:18px;z-index:600;display:flex;align-items:center;gap:4px;
+    background:var(--ui-bg);border:1px solid var(--ui-line);border-radius:999px;padding:5px;box-shadow:0 10px 30px rgba(0,0,0,.22);
+    font-family:var(--sans,system-ui,sans-serif);max-width:calc(100vw - 24px)}
+  .rtools button,.rtools a.rbtn{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;cursor:pointer;
+    color:var(--ui-ink);font:inherit;font-size:12px;font-weight:600;letter-spacing:.02em;padding:8px 12px;border-radius:999px;line-height:1;text-decoration:none;white-space:nowrap}
+  .rtools button:hover,.rtools a.rbtn:hover{background:var(--ui-hover)}
+  .rtools .on{background:var(--ui-on);color:var(--ui-ink)}
+  .rtools .sep{width:1px;height:22px;background:var(--ui-line);margin:0 2px;flex-shrink:0}
+  .rtools .ic{font-size:14px;line-height:1}
+  .rtools .zval{min-width:46px;justify-content:center;font-variant-numeric:tabular-nums}
+  @media (max-width:560px){
+    .rtools{right:10px;bottom:10px;padding:4px;gap:2px}
+    .rtools button,.rtools a.rbtn{padding:8px 9px;font-size:11px}
+    .rtools .lbl{display:none}
+  }
+  @media print{.rtools{display:none}}
+
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="topbar"><div class="topbar-in">
+  <a class="back" href="index.html">&larr; Library</a>
+  <span class="doc">Lumbar &middot; Long Essay</span>
+</div></div>
+
+<div class="wrap">
+
+<header class="doc-head">
+  <div class="kicker">Physical and Functional Diagnosis in Musculoskeletal Disorders &middot; Long essay</div>
+  <h1>How do you conclude during screening that the pain in the lumbar spine is due to disc herniation?</h1>
+  <div class="sub">Justified with differential diagnosis &nbsp;&middot;&nbsp; Paper III (RS-3) &nbsp;&middot;&nbsp; Long essay &nbsp;&middot;&nbsp; 10 marks &nbsp;&middot;&nbsp; Simple drawable diagrams &nbsp;&middot;&nbsp; Tap any <span style="border-bottom:1.5px dotted var(--accent)">dotted term</span> for a plain-language definition.</div>
+</header>
+
+<h2>1. Introduction</h2>
+<p>A <span class="g" data-t="disc herniation" tabindex="0">lumbar disc herniation</span> is the displacement of nucleus pulposus, or of annulus material, beyond the normal margin of the intervertebral disc. Because the posterior and posterolateral annulus is the weakest part of the disc, the extruded material most often tracks posterolaterally, where it contacts or compresses a traversing or exiting <span class="g" data-t="nerve root" tabindex="0">nerve root</span>. The result is low back pain with or without <span class="g" data-t="radicular pain" tabindex="0">radicular</span> leg pain (sciatica).</p>
+<p>The screening question is never simply "is there a disc bulge?" Imaging shows disc bulges in 20&ndash;30% of symptom-free adults, so a bulge on a scan does not prove that the disc is generating the pain. The real question is whether the patient's pain is produced by a mechanically and chemically irritated nerve root, and whether the whole clinical picture fits a disc lesion rather than another structure.</p>
+<div class="key">Diagnosis in physiotherapy is <mark>pattern recognition plus exclusion</mark>. No single test is both highly sensitive and highly specific, so the conclusion is reached by building a consistent cluster of findings and by showing that the competing diagnoses do not fit.</div>
+
+<h2>2. Functional anatomy and pathomechanism</h2>
+<p>The disc has a tough outer <b>annulus fibrosus</b> and a gelatinous inner <b>nucleus pulposus</b>. A posterolateral herniation compresses the root at that level: a paracentral L4&ndash;L5 herniation typically affects the <b>L5</b> root, and a paracentral L5&ndash;S1 herniation typically affects the <b>S1</b> root. Radicular pain arises from mechanical compression <i>plus</i> chemical and inflammatory irritation of the root and its dorsal root ganglion.</p>
+<p>Nerve roots are relatively fixed as they cross the intervertebral foramen, so any movement of the spine or limb that increases root tension reproduces the leg pain. That single fact is the physiological basis of the <span class="g" data-t="neural tension test" tabindex="0">neural tension tests</span> &mdash; straight leg raise and slump &mdash; on which the screening conclusion rests.</p>
+
+<h2>3. The screening process &mdash; gathering the evidence</h2>
+
+<h3>3.1 History (the strongest single element)</h3>
+<ul>
+  <li><b>Mechanism</b> &mdash; a quick movement into flexion, rotation, side flexion or extension, often while bending and lifting or twisting under load.</li>
+  <li><b>Pain pattern</b> &mdash; back pain with referral into the posterior or lateral leg and foot, in a band that follows a nerve root; the leg pain is often worse than the back pain.</li>
+  <li><b>Aggravating factors</b> &mdash; coughing, sneezing, straining and sitting increase pain (the <span class="g" data-t="Valsalva" tabindex="0">Valsalva</span> manoeuvre raises intradiscal and dural pressure).</li>
+  <li><b>Relieving factors</b> &mdash; lying down; some patients ease in extension, others in flexion (their directional preference).</li>
+  <li><b>Associated features</b> &mdash; numbness, tingling and weakness, plus the <span class="g" data-t="red flags" tabindex="0">red-flag</span> questions (saddle numbness, bladder or bowel disturbance, bilateral symptoms, progressive weakness, night pain, weight loss, cancer history, fever, significant trauma, new pain over age 50).</li>
+</ul>
+
+<h3>3.2 Observation</h3>
+<p>Look for an antalgic (sciatic) <b>scoliosis</b> or lateral shift, muscle guarding, and an inability to stand straight. Loss of the lumbar lordosis and an asymmetric, protective posture that reduces root tension are typical.</p>
+
+<h3>3.3 Active and passive movement</h3>
+<p>There is pain on both extension and flexion, with side flexion and rotation also affected, and overall range is limited. The meaningful finding is a movement that reproduces the <b>leg</b> pain, not merely back pain. Repeated-movement examination may show <span class="g" data-t="centralisation" tabindex="0">centralisation</span> of leg pain (a favourable disc sign) or peripheralisation (a worsening sign).</p>
+
+<h3>3.4 Neurological examination &mdash; localising the root</h3>
+<ul>
+  <li><b><span class="g" data-t="myotome" tabindex="0">Myotomes</span></b> &mdash; L4 ankle dorsiflexion (tibialis anterior), L5 great-toe and foot dorsiflexion (extensor hallucis longus), S1 plantar flexion (gastrocnemius&ndash;soleus).</li>
+  <li><b><span class="g" data-t="dermatome" tabindex="0">Dermatomes</span></b> &mdash; L4 medial leg, L5 lateral leg and dorsum of the foot and great toe, S1 lateral foot and sole.</li>
+  <li><b>Reflexes</b> &mdash; L4 knee jerk, S1 ankle jerk (L5 has no reliable reflex).</li>
+</ul>
+<p>A dermatomal sensory loss, a single myotomal weakness and a matching diminished reflex together point to one nerve root.</p>
+
+<h3>3.5 Neural tension tests &mdash; the most useful provocation tests</h3>
+<ul>
+  <li><b>Straight leg raise (Las&egrave;gue)</b> &mdash; hip flexion with the knee extended; a positive test reproduces the patient's leg pain at about 30&ndash;70&deg;. Pain is confirmed by sensitising manoeuvres: ankle dorsiflexion (Bragard), neck flexion (Brudzinski / Soto-Hall), or medial hip rotation. The L5, S1 and S2 roots are fully stretched by about 70&deg; of hip flexion, with an excursion of roughly 2&ndash;6 cm.</li>
+  <li><b>Crossed (well-leg) SLR</b> (Fajersztajn) &mdash; raising the <i>unaffected</i> leg reproduces pain in the affected leg; this is highly specific for a space-occupying lesion such as a herniated disc.</li>
+  <li><b>Slump test</b> &mdash; seated, the patient slumps the thoracic and lumbar spine, flexes the neck, then extends the knee and dorsiflexes the ankle. Reproduction of radicular pain that eases when the neck or the knee is released is a positive test. It adds cephalad dural glide, so it may be positive even when the SLR is negative.</li>
+  <li><b>Femoral nerve traction test</b> &mdash; for upper lumbar (L2&ndash;L4) lesions, performed prone by extending the hip and flexing the knee.</li>
+</ul>
+
+<h3>3.6 Investigations</h3>
+<p>MRI is the investigation of choice for soft tissue such as disc and root; CT shows bone detail; plain radiographs mainly exclude fracture or other bony pathology; and EMG / nerve conduction studies confirm radiculopathy and exclude a peripheral nerve lesion. Imaging is always interpreted with the clinical picture, never instead of it.</p>
+
+<figure>
+<svg viewBox="0 0 660 470" role="img" aria-label="Screening sequence from history to conclusion">
+  <defs><marker id="ar" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#8a8276"/></marker></defs>
+  <rect x="150" y="12" width="360" height="50" rx="10" fill="#fbeaea" stroke="#b0392b" stroke-width="2"/>
+  <text x="330" y="42" font-size="16" font-weight="bold" text-anchor="middle" fill="#b0392b">1. History (radicular pattern + red flags)</text>
+  <line x1="330" y1="62" x2="330" y2="82" stroke="#8a8276" stroke-width="2.5" marker-end="url(#ar)"/>
+  <rect x="150" y="84" width="360" height="50" rx="10" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="330" y="114" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e3a5f">2. Observation (scoliosis, guarding)</text>
+  <line x1="330" y1="134" x2="330" y2="154" stroke="#8a8276" stroke-width="2.5" marker-end="url(#ar)"/>
+  <rect x="150" y="156" width="360" height="50" rx="10" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="330" y="186" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e3a5f">3. Movement (pain on flexion + extension)</text>
+  <line x1="330" y1="206" x2="330" y2="226" stroke="#8a8276" stroke-width="2.5" marker-end="url(#ar)"/>
+  <rect x="150" y="228" width="360" height="50" rx="10" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="330" y="258" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e3a5f">4. Neurology (myotome / dermatome / reflex)</text>
+  <line x1="330" y1="278" x2="330" y2="298" stroke="#8a8276" stroke-width="2.5" marker-end="url(#ar)"/>
+  <rect x="140" y="300" width="380" height="50" rx="10" fill="#eaf3e6" stroke="#4a7a2e" stroke-width="2"/>
+  <text x="330" y="330" font-size="16" font-weight="bold" text-anchor="middle" fill="#4a7a2e">5. Neural tension tests (SLR, slump)</text>
+  <line x1="330" y1="350" x2="330" y2="370" stroke="#8a8276" stroke-width="2.5" marker-end="url(#ar)"/>
+  <rect x="110" y="372" width="440" height="84" rx="10" fill="#fdf3e0" stroke="#b07a1e" stroke-width="2"/>
+  <text x="330" y="402" font-size="16" font-weight="bold" text-anchor="middle" fill="#8a5a10">6. Synthesis &mdash; consistent cluster + rule out differentials</text>
+  <text x="330" y="428" font-size="14" text-anchor="middle" fill="#333">Conclusion &rarr; level &rarr; confirmed on MRI</text>
+</svg>
+<figcaption>Fig. 1 &mdash; The screening runs from history, through observation, movement and neurology, to the neural tension tests, and ends in a synthesised conclusion.</figcaption>
+</figure>
+
+<h2>4. How the conclusion is reached &mdash; the diagnostic cluster</h2>
+<p>The clinician concludes that the pain is due to disc herniation when a consistent cluster is present:</p>
+<ol>
+  <li>A history of radicular pain in a dermatomal distribution, worse on Valsalva and eased by rest.</li>
+  <li>A positive neural tension sign (SLR and/or slump) that reproduces the patient's <b>leg</b> pain.</li>
+  <li>A matching, single-root neurological deficit (dermatome, myotome or reflex).</li>
+  <li>Findings that localise to one level and one side.</li>
+  <li>Absence of features pointing to another structure, and absence of red flags.</li>
+  <li>Confirmation on MRI that correlates with the clinical level.</li>
+</ol>
+<div class="key">The SLR is <b>sensitive but not specific</b>. A negative SLR does not exclude a disc lesion, and a positive SLR does not by itself prove one. It is the <mark>combination</mark> &mdash; radicular history + positive neural tension test + matching root deficit + a normal competing examination &mdash; that raises the probability enough to conclude, and imaging then confirms it.</div>
+
+<figure>
+<svg viewBox="0 0 660 330" role="img" aria-label="Straight leg raise test technique">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#b0392b"/></marker>
+  <marker id="ar2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1e3a5f"/></marker></defs>
+  <text x="24" y="28" font-family="IBM Plex Sans" font-size="14" font-weight="600" fill="#1e3a5f">A &middot; Basic straight leg raise (Las&#232;gue)</text>
+  <line x1="24" y1="250" x2="318" y2="250" stroke="#8a8276" stroke-width="2"/>
+  <line x1="70" y1="234" x2="196" y2="240" stroke="#1e3a5f" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="58" cy="224" r="15" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <polyline points="196,240 268,246 314,248" fill="none" stroke="#1e3a5f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="314" y1="248" x2="322" y2="226" stroke="#1e3a5f" stroke-width="5" stroke-linecap="round"/>
+  <polyline points="196,240 288,150 352,72" fill="none" stroke="#b0392b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="352" y1="72" x2="372" y2="70" stroke="#b0392b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M256,240 A60,60 0 0 0 239,198" fill="none" stroke="#b0392b" stroke-width="1.6"/>
+  <text x="262" y="222" font-family="IBM Plex Sans" font-size="13" fill="#b0392b">&#8776;70&#176;</text>
+  <line x1="300" y1="90" x2="272" y2="120" stroke="#b0392b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="170" y="300" font-family="IBM Plex Sans" font-size="12.5" fill="#7a7268" text-anchor="middle">passive hip flexion, knee extended</text>
+  <text x="352" y="28" font-family="IBM Plex Sans" font-size="14" font-weight="600" fill="#1e3a5f">B &middot; Sensitising the test</text>
+  <line x1="352" y1="250" x2="640" y2="250" stroke="#8a8276" stroke-width="2"/>
+  <line x1="398" y1="236" x2="486" y2="240" stroke="#1e3a5f" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="386" cy="226" r="14" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <polyline points="486,240 552,168 596,110" fill="none" stroke="#b0392b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="596" y1="110" x2="618" y2="104" stroke="#b0392b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M376,210 q-16,-6 -14,-24" fill="none" stroke="#1e3a5f" stroke-width="2" marker-end="url(#ar2)"/>
+  <text x="352" y="176" font-family="IBM Plex Sans" font-size="11.5" fill="#1e3a5f">neck flexion</text>
+  <path d="M614,126 q14,-12 4,-24" fill="none" stroke="#1e3a5f" stroke-width="2" marker-end="url(#ar2)"/>
+  <text x="500" y="92" font-family="IBM Plex Sans" font-size="11.5" fill="#1e3a5f">ankle dorsiflexion</text>
+  <text x="500" y="300" font-family="IBM Plex Sans" font-size="12.5" fill="#7a7268" text-anchor="middle">pain returns = positive</text>
+</svg>
+<figcaption>Fig. 2 &mdash; Straight leg raise. Pain is reproduced as the leg is lifted (A) and is confirmed when ankle dorsiflexion or neck flexion brings it back (B).</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 660 300" role="img" aria-label="Slump test sequence">
+  <defs><marker id="ars" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a7a2e"/></marker></defs>
+  <text x="26" y="28" font-family="IBM Plex Sans" font-size="13.5" font-weight="600" fill="#4a7a2e">A &middot; Slump spine</text>
+  <line x1="20" y1="238" x2="150" y2="238" stroke="#8a8276" stroke-width="2"/>
+  <line x1="70" y1="238" x2="70" y2="270" stroke="#8a8276" stroke-width="2"/>
+  <polyline points="96,238 44,186" fill="none" stroke="#1e3a5f" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="38" cy="172" r="12" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <polyline points="96,238 138,232 138,272" fill="none" stroke="#1e3a5f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="252" y="28" font-family="IBM Plex Sans" font-size="13.5" font-weight="600" fill="#4a7a2e">B &middot; Add neck flexion</text>
+  <line x1="246" y1="238" x2="376" y2="238" stroke="#8a8276" stroke-width="2"/>
+  <line x1="296" y1="238" x2="296" y2="270" stroke="#8a8276" stroke-width="2"/>
+  <polyline points="322,238 270,186" fill="none" stroke="#1e3a5f" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="256" cy="184" r="12" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <polyline points="322,238 364,232 364,272" fill="none" stroke="#1e3a5f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M262,172 q-8,6 -4,16" fill="none" stroke="#4a7a2e" stroke-width="2" marker-end="url(#ars)"/>
+  <text x="452" y="28" font-family="IBM Plex Sans" font-size="13.5" font-weight="600" fill="#4a7a2e">C &middot; Extend knee, dorsiflex</text>
+  <line x1="452" y1="238" x2="600" y2="238" stroke="#8a8276" stroke-width="2"/>
+  <line x1="512" y1="238" x2="512" y2="270" stroke="#8a8276" stroke-width="2"/>
+  <polyline points="538,238 486,186" fill="none" stroke="#1e3a5f" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="472" cy="184" r="12" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <polyline points="538,238 604,222" fill="none" stroke="#b0392b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="604" y1="222" x2="612" y2="204" stroke="#b0392b" stroke-width="5" stroke-linecap="round"/>
+  <text x="330" y="292" font-family="IBM Plex Sans" font-size="12.5" fill="#7a7268" text-anchor="middle">radicular pain that eases on releasing neck or knee = positive</text>
+</svg>
+<figcaption>Fig. 3 &mdash; Slump test. The spine is slumped (A), the neck flexed (B), then the knee extended and ankle dorsiflexed (C); reproduction of leg pain is the positive finding.</figcaption>
+</figure>
+
+<h2>5. Diagnostic value of the key tests</h2>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Test</th><th>What it stresses</th><th>Positive finding</th><th>Sensitivity</th><th>Specificity</th></tr></thead>
+  <tbody>
+    <tr><td>Straight leg raise (Las&egrave;gue)</td><td>L5&ndash;S2 roots, sciatic nerve</td><td>Leg pain at 30&ndash;70&deg;, eased on lowering the leg and returning on dorsiflexion</td><td>0.91 (Deville 2000); 0.92 (Cochrane 2010)</td><td>0.26 (Deville 2000); 0.28 (Cochrane 2010)</td></tr>
+    <tr><td>Crossed (well-leg) SLR</td><td>Opposite nerve root</td><td>Pain in the affected leg when the well leg is raised</td><td>0.29</td><td>0.88&ndash;0.90</td></tr>
+    <tr><td>Slump test</td><td>Spinal cord, lumbar roots, sciatic nerve</td><td>Radicular pain relieved by releasing neck flexion or knee extension</td><td>0.84 (Majlesi 2008); 0.44 strict cut-off (Stankovic 1999)</td><td>0.83 (Majlesi 2008); 0.58 (Stankovic 1999)</td></tr>
+  </tbody>
+</table></div>
+<p>Figures vary with the reference standard and the population studied. Most surgical-population studies give the SLR a high sensitivity and a low specificity, so it is good at ruling a disc lesion <i>out</i> when negative but weak at confirming it when positive.</p>
+
+<h2>6. Differential diagnosis &mdash; justifying the conclusion by exclusion</h2>
+<p>The essential skill is to show that the picture fits a disc lesion and not one of its mimics. The table below contrasts the two commonest presentations in the lumbar region.</p>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Feature</th><th>Lumbar strain</th><th>Lumbar disc (L5&ndash;S1)</th></tr></thead>
+  <tbody>
+    <tr><td>History</td><td>Flexion / side-flexion / rotation under or without load</td><td>Quick movement into flexion, rotation, side flexion or extension</td></tr>
+    <tr><td>Pain</td><td>Lumbar spine, may refer to buttocks</td><td>Lumbar spine with referral into posterior leg and foot (radicular)</td></tr>
+    <tr><td>Aggravation</td><td>Extension (contraction) or flexion (stretch)</td><td>Extension and flexion; Valsalva</td></tr>
+    <tr><td>Observation</td><td>Scoliosis, muscle spasm</td><td>Scoliosis, muscle guarding</td></tr>
+    <tr><td>Active movement</td><td>Pain on flexion, side flexion, rotation; limited ROM</td><td>Pain on extension and flexion; side flexion / rotation affected; limited ROM</td></tr>
+    <tr><td>Resisted isometric</td><td>Pain on contraction</td><td>Minimal pain unless large protrusion</td></tr>
+    <tr><td>Neurology</td><td>Myotomes normal, neuro tests negative</td><td>L5&ndash;S1 myotomes, dermatomes and reflexes may be affected</td></tr>
+    <tr><td>Special tests</td><td>&mdash;</td><td>SLR and slump test positive</td></tr>
+    <tr><td>Sensation / reflexes</td><td>Normal</td><td>L5&ndash;S1 dermatome and reflex may be affected</td></tr>
+  </tbody>
+</table></div>
+<p class="sub" style="margin-top:-8px">Adapted from Magee, <i>Orthopedic Physical Assessment</i>, Table 9-18.</p>
+
+<h4>Other differentials and how each is distinguished</h4>
+<ul>
+  <li><b>Non-specific (mechanical) low back pain / strain</b> &mdash; no radicular pain, normal neurology, negative neural tension tests.</li>
+  <li><b>Facet (zygapophyseal) joint arthropathy</b> &mdash; pain on extension and rotation, paraspinal and referred non-dermatomally, with no neurological deficit.</li>
+  <li><b>Sacroiliac joint dysfunction</b> &mdash; pain below L5 over the PSIS and buttock, provoked by SI cluster tests; neurology normal.</li>
+  <li><b>Lumbar spinal stenosis</b> &mdash; neurogenic claudication, bilateral, worse on walking and standing, relieved by sitting or flexion; usually older patients; SLR often negative.</li>
+  <li><b>Spondylolysis / spondylolisthesis</b> &mdash; extension pain, positive one-leg standing (stork) test; imaging confirms the pars defect or slip.</li>
+  <li><b>Myofascial pain / trigger points</b> &mdash; referred pain that does not follow a dermatome, no neurological deficit.</li>
+  <li><b>Hip pathology (e.g. osteoarthritis)</b> &mdash; groin or buttock pain, restricted hip range, positive hip quadrant / scour. A positive <span class="g" data-t="sign of the buttock" tabindex="0">sign of the buttock</span> (SLR limited by buttock pain that does not change with ankle dorsiflexion) points to hip or buttock pathology, not a disc.</li>
+  <li><b>Piriformis syndrome</b> &mdash; buttock pain with a positive SLR but normal neurology; the source is the muscle, not the root.</li>
+  <li><b>Vertebral compression fracture</b> &mdash; sudden onset in an osteoporotic or older patient, focal tenderness, red flags; imaging.</li>
+  <li><b>Infection (discitis, spinal tuberculosis) and malignancy</b> &mdash; constant unrelenting night pain, fever, weight loss, cancer history, new pain over age 50 &mdash; red flags that mandate referral, not physiotherapy.</li>
+  <li><b>Ankylosing spondylitis</b> &mdash; young patient, insidious onset, morning stiffness, bilateral SI involvement, improves with exercise.</li>
+  <li><b><span class="g" data-t="cauda equina" tabindex="0">Cauda equina syndrome</span></b> &mdash; saddle anaesthesia, bladder or bowel dysfunction, bilateral leg symptoms, progressive weakness &mdash; a surgical emergency.</li>
+</ul>
+
+<figure>
+<svg viewBox="0 0 660 380" role="img" aria-label="Differential diagnosis decision tree">
+  <defs><marker id="art" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#8a8276"/></marker></defs>
+  <rect x="230" y="12" width="200" height="42" rx="9" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="330" y="38" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e3a5f">Lumbar + leg pain</text>
+  <line x1="330" y1="54" x2="330" y2="72" stroke="#8a8276" stroke-width="2" marker-end="url(#art)"/>
+  <rect x="230" y="74" width="200" height="42" rx="9" fill="#fbeaea" stroke="#b0392b" stroke-width="2"/>
+  <text x="330" y="100" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#b0392b">Red flags present?</text>
+  <line x1="430" y1="95" x2="500" y2="95" stroke="#8a8276" stroke-width="2" marker-end="url(#art)"/>
+  <text x="440" y="88" font-size="11.5" fill="#7a7268">yes</text>
+  <rect x="502" y="66" width="150" height="58" rx="9" fill="#fbeaea" stroke="#b0392b" stroke-width="1.5"/>
+  <text x="577" y="90" font-size="11.5" text-anchor="middle" fill="#b0392b">Refer urgently</text>
+  <text x="577" y="108" font-size="10.5" text-anchor="middle" fill="#7a7268">fracture / infection /</text>
+  <text x="577" y="121" font-size="10.5" text-anchor="middle" fill="#7a7268">tumour / cauda equina</text>
+  <line x1="330" y1="116" x2="330" y2="134" stroke="#8a8276" stroke-width="2" marker-end="url(#art)"/>
+  <text x="338" y="130" font-size="11.5" fill="#7a7268">no</text>
+  <rect x="210" y="136" width="240" height="42" rx="9" fill="#eaf3e6" stroke="#4a7a2e" stroke-width="2"/>
+  <text x="330" y="162" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#4a7a2e">Neural tension test positive?</text>
+  <line x1="210" y1="157" x2="140" y2="157" stroke="#8a8276" stroke-width="2" marker-end="url(#art)"/>
+  <text x="150" y="150" font-size="11.5" fill="#7a7268">no</text>
+  <rect x="14" y="128" width="122" height="58" rx="9" fill="#fdf3e0" stroke="#b07a1e" stroke-width="1.5"/>
+  <text x="75" y="150" font-size="11" text-anchor="middle" fill="#8a5a10">Consider facet, SI,</text>
+  <text x="75" y="165" font-size="11" text-anchor="middle" fill="#8a5a10">myofascial, hip,</text>
+  <text x="75" y="180" font-size="11" text-anchor="middle" fill="#8a5a10">stenosis</text>
+  <line x1="330" y1="178" x2="330" y2="196" stroke="#8a8276" stroke-width="2" marker-end="url(#art)"/>
+  <rect x="200" y="198" width="260" height="46" rx="9" fill="#eaf3e6" stroke="#4a7a2e" stroke-width="2"/>
+  <text x="330" y="218" font-size="13" font-weight="bold" text-anchor="middle" fill="#4a7a2e">Matching single-root deficit?</text>
+  <text x="330" y="235" font-size="11" text-anchor="middle" fill="#7a7268">dermatome / myotome / reflex</text>
+  <line x1="330" y1="244" x2="330" y2="262" stroke="#8a8276" stroke-width="2" marker-end="url(#art)"/>
+  <text x="338" y="258" font-size="11.5" fill="#7a7268">yes</text>
+  <rect x="190" y="264" width="280" height="50" rx="9" fill="#fdf3e0" stroke="#b07a1e" stroke-width="2"/>
+  <text x="330" y="288" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#8a5a10">Disc herniation &mdash; confirm level</text>
+  <text x="330" y="306" font-size="11" text-anchor="middle" fill="#7a7268">correlate with MRI</text>
+  <line x1="200" y1="232" x2="106" y2="278" stroke="#8a8276" stroke-width="2" marker-end="url(#art)"/>
+  <text x="150" y="262" font-size="11.5" fill="#7a7268">no</text>
+  <rect x="20" y="284" width="150" height="60" rx="9" fill="#f7f2e7" stroke="#8a8276" stroke-width="1.5"/>
+  <text x="95" y="306" font-size="11" text-anchor="middle" fill="#7a7268">Disc still possible &mdash;</text>
+  <text x="95" y="321" font-size="11" text-anchor="middle" fill="#7a7268">SLR is sensitive,</text>
+  <text x="95" y="336" font-size="11" text-anchor="middle" fill="#7a7268">not specific. Review.</text>
+</svg>
+<figcaption>Fig. 4 &mdash; A decision tree for the screening conclusion: red flags first, then neural tension, then the matching root deficit, with the differentials held in reserve.</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 660 300" role="img" aria-label="Nerve root signs L4 L5 S1">
+  <path d="M70,20 L150,20 L146,140 L138,150 L146,270 L100,270 L100,160 L70,150 Z" fill="#f3ecdd" stroke="#8a8276" stroke-width="1.5"/>
+  <path d="M100,270 L100,288 L146,288 L146,270" fill="none" stroke="#8a8276" stroke-width="1.5"/>
+  <rect x="68" y="112" width="82" height="16" fill="#cfe0f0" opacity="0.85"/>
+  <rect x="100" y="184" width="48" height="16" fill="#e6d2a8" opacity="0.9"/>
+  <rect x="98" y="256" width="50" height="16" fill="#e7c3b8" opacity="0.9"/>
+  <text x="168" y="125" font-size="13" font-weight="bold" fill="#1e3a5f">L4 &mdash; medial leg</text>
+  <text x="168" y="196" font-size="13" font-weight="bold" fill="#8a5a10">L5 &mdash; lateral leg, dorsum foot</text>
+  <text x="168" y="268" font-size="13" font-weight="bold" fill="#a04a2e">S1 &mdash; lateral foot, sole</text>
+  <line x1="400" y1="20" x2="400" y2="290" stroke="#e3dbca" stroke-width="1"/>
+  <text x="415" y="44" font-size="13" font-weight="bold" fill="#1e3a5f">Root</text>
+  <text x="462" y="44" font-size="13" font-weight="bold" fill="#1e3a5f">Motor</text>
+  <text x="560" y="44" font-size="13" font-weight="bold" fill="#1e3a5f">Reflex</text>
+  <text x="415" y="100" font-size="13" fill="#1e3a5f">L4</text>
+  <text x="462" y="100" font-size="11.5" fill="#333">dorsiflexion</text>
+  <text x="560" y="100" font-size="11.5" fill="#333">knee jerk</text>
+  <text x="415" y="180" font-size="13" fill="#8a5a10">L5</text>
+  <text x="462" y="180" font-size="11.5" fill="#333">EHL / big toe</text>
+  <text x="560" y="180" font-size="11.5" fill="#333">&mdash;</text>
+  <text x="415" y="260" font-size="13" fill="#a04a2e">S1</text>
+  <text x="462" y="260" font-size="11.5" fill="#333">plantar flexion</text>
+  <text x="560" y="260" font-size="11.5" fill="#333">ankle jerk</text>
+</svg>
+<figcaption>Fig. 5 &mdash; Root-wise signs. A dermatomal band, a myotomal weakness and a matching reflex change together identify the single level involved.</figcaption>
+</figure>
+
+<h2>7. Red flags &mdash; when NOT to conclude "disc"</h2>
+<p>Before attributing the pain to a disc, screen for and exclude serious pathology: new pain over age 50, significant trauma, night pain that wakes the patient, unexplained weight loss, a history of cancer, fever, intravenous drug use, immunosuppression, saddle anaesthesia, and bladder or bowel dysfunction. Their presence changes the conclusion from "disc herniation" to "refer for urgent medical assessment".</p>
+
+<h2>8. Conclusion</h2>
+<p>The pain in the lumbar spine is concluded to be due to disc herniation when a radicular history is combined with a positive neural tension test that reproduces the leg pain, a matching single-root neurological deficit, and the absence of any competing diagnosis or red flag &mdash; with MRI confirming the level. Screening is a process of exclusion as much as detection: the SLR is sensitive but not specific, the crossed SLR and the slump test add information, and no single finding is decisive. The examiner therefore concludes from the whole pattern, not from one test, and justifies the diagnosis by showing that the differentials &mdash; strain, facet and SI joint dysfunction, stenosis, spondylolisthesis, myofascial pain, hip pathology, fracture, infection, tumour and cauda equina &mdash; do not fit.</p>
+
+<p class="src"><b>Sources</b> &mdash; Magee DJ, <i>Orthopedic Physical Assessment</i>, Chapter 9, Lumbar Spine (Tables 9-13, 9-14, 9-18); Deville WL et al., <i>Spine</i> 2000;25(9):1140&ndash;1147; van der Windt DA et al., <i>Cochrane Database Syst Rev</i> 2010;(2):CD007431; Majlesi J et al., <i>J Clin Rheumatol</i> 2008;14(2):87&ndash;91; Stankovic R et al., <i>Man Ther</i> 1999;4(1):25&ndash;32; Vroomen PC et al., <i>J Neurol</i> 1999;246(10):899&ndash;906; Boden SD et al., <i>J Bone Joint Surg Am</i> 1990;72(3):403&ndash;408; Koes BW et al., <i>BMJ</i> 2007;334(7607):1313&ndash;1317; Butler DS, <i>Mobilisation of the Nervous System</i>, 1991.</p>
+
+<div class="refbox">
+  <div class="rb-t">References</div>
+  <p class="rb-p">The reference list for this essay, as a one-page PDF &mdash; open it in your browser or download it.</p>
+  <div class="rb-actions">
+    <a class="rb-open" href="Lumbar-Disc-Herniation-Screening-References.pdf" target="_blank" rel="noopener">Open references (PDF)</a>
+    <a class="rb-dl" href="Lumbar-Disc-Herniation-Screening-References.pdf" download>Download PDF</a>
+  </div>
+</div>
+<div class="next">
+  <a href="Basic-Assessment-Methods-Musculoskeletal.html">&larr; Basic Assessment Methods</a>
+  <a href="Frozen-Shoulder-Mobility-Essay.html">Frozen Shoulder &middot; Long essay &rarr;</a>
+</div>
+
+</div>
+
+<div id="pop" role="dialog" aria-live="polite"><span class="pt"></span><span class="pd"></span><span class="arrow"></span></div>
+
+<script>
+const GLOSSARY = {
+  "disc herniation":"Displacement of nucleus pulposus or annulus material beyond the normal margin of the intervertebral disc; a posterolateral herniation compresses the nearby nerve root.",
+  "nerve root":"The part of a spinal nerve as it leaves the spinal cord through the intervertebral foramen. Compression or irritation of a root causes pain, numbness and weakness in its territory.",
+  "radicular pain":"Pain that travels along the distribution of a nerve root (a dermatome), often shooting, burning or electric in quality, unlike local back pain.",
+  "neural tension test":"A test that puts a nerve under tension by moving the spine and limb, to reproduce the patient's radiating pain (e.g. straight leg raise, slump).",
+  "valsalva":"Straining or coughing against a closed airway, which raises pressure around the disc and dural sac and typically increases radicular pain.",
+  "red flags":"Signs that suggest serious pathology such as fracture, infection or tumour (severe night pain, weight loss, cancer history, fever, saddle numbness, bladder or bowel disturbance) and require medical referral.",
+  "centralisation":"The movement of referred leg pain towards the midline of the back in response to repeated movements or positioning; a favourable sign in disc-related pain.",
+  "myotome":"The group of muscles supplied by a single spinal nerve root, tested by a resisted contraction (e.g. L5 = great-toe extension).",
+  "dermatome":"The area of skin supplied by a single spinal nerve root, tested with light touch or pin-prick (e.g. L4 = medial leg).",
+  "sign of the buttock":"A straight leg raise limited by pain in the buttock that does not change with ankle dorsiflexion, suggesting hip, buttock or pelvic pathology rather than a disc.",
+  "cauda equina":"The bundle of nerve roots below the spinal cord. Compression (cauda equina syndrome) causes saddle anaesthesia and bladder or bowel dysfunction and is a surgical emergency.",
+  "sensitivity":"The proportion of people who truly have the condition and test positive. A highly sensitive test is good for ruling a condition out when negative.",
+  "specificity":"The proportion of people who do not have the condition and test negative. A highly specific test is good for ruling a condition in when positive."
+};
+
+const pop = document.getElementById('pop');
+const pt = pop.querySelector('.pt');
+const pd = pop.querySelector('.pd');
+const arrow = pop.querySelector('.arrow');
+let current = null;
+
+function show(el){
+  const key = el.getAttribute('data-t');
+  const def = GLOSSARY[key.toLowerCase()];
+  if(!def) return;
+  pt.textContent = key;
+  pd.textContent = def;
+  current = el;
+  pop.classList.add('show');
+  position(el);
+}
+function position(el){
+  const r = el.getBoundingClientRect();
+  const sx = window.scrollX, sy = window.scrollY;
+  pop.style.left = '0px'; pop.style.top = '0px';
+  const pw = pop.offsetWidth, ph = pop.offsetHeight;
+  let left = r.left + sx + r.width/2 - pw/2;
+  left = Math.max(12 + sx, Math.min(left, sx + document.documentElement.clientWidth - pw - 12));
+  let top = r.bottom + sy + 12;
+  let above = false;
+  if(r.bottom + ph + 24 > window.innerHeight){ top = r.top + sy - ph - 12; above = true; }
+  pop.style.left = left + 'px';
+  pop.style.top = top + 'px';
+  arrow.style.left = Math.max(14, Math.min(r.left + sx + r.width/2 - left - 6, pw - 26)) + 'px';
+  arrow.style.top = above ? (ph - 6) + 'px' : '-6px';
+}
+function hide(){ pop.classList.remove('show'); current = null; }
+
+document.querySelectorAll('.g').forEach(el=>{
+  el.addEventListener('click', e=>{ e.preventDefault(); if(current===el){hide();} else {show(el);} });
+  el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(el);} });
+});
+document.addEventListener('click', e=>{ if(!e.target.closest('.g') && !e.target.closest('#pop')) hide(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') hide(); });
+window.addEventListener('scroll', ()=>{ if(current) position(current); }, {passive:true});
+window.addEventListener('resize', ()=>{ if(current) position(current); });
+
+const prog = document.getElementById('prog');
+function onScroll(){
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+</script>
+
+<div class="rtools" role="group" aria-label="Reading controls">
+  <a class="rbtn" href="index.html" title="Back to library"><span class="ic">&#8962;</span><span class="lbl">Home</span></a>
+  <span class="sep"></span>
+  <button class="rbtn" id="tDark" type="button" title="Toggle dark mode" aria-pressed="false"><span class="ic" id="tDarkIcon">&#9789;</span><span class="lbl">Dark</span></button>
+  <span class="sep"></span>
+  <button class="rbtn" id="tFit" type="button" title="Fit to page" aria-pressed="false"><span class="ic">&#10530;</span><span class="lbl">Fit</span></button>
+  <span class="sep"></span>
+  <button class="rbtn" id="tRead" type="button" title="Reading mode" aria-pressed="false"><span class="ic">&#9636;</span><span class="lbl">Reading</span></button>
+</div>
+<script>
+(function(){
+  var root=document.documentElement, body=document.body;
+  var KEY_T='msk-theme', KEY_F='msk-fit', KEY_R='msk-reading';
+  var savedT=localStorage.getItem(KEY_T);
+  if(savedT==='dark'||savedT==='light'){root.setAttribute('data-theme',savedT);}
+  function isDark(){
+    var t=root.getAttribute('data-theme');
+    if(t) return t==='dark';
+    return !!(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);
+  }
+  var tDark=document.getElementById('tDark');
+  function paintTheme(){
+    var d=isDark();
+    if(tDark){
+      tDark.classList.toggle('on',d);
+      tDark.setAttribute('aria-pressed',d?'true':'false');
+      var ic=document.getElementById('tDarkIcon'); if(ic) ic.innerHTML=d?'&#9789;':'&#9728;';
+      var lbl=tDark.querySelector('.lbl'); if(lbl) lbl.textContent=d?'Dark':'Light';
+    }
+  }
+  paintTheme();
+  if(tDark) tDark.addEventListener('click',function(){
+    var next=isDark()?'light':'dark';
+    root.setAttribute('data-theme',next); localStorage.setItem(KEY_T,next); paintTheme();
+  });
+  var tFit=document.getElementById('tFit');
+  var f=localStorage.getItem(KEY_F)==='1';
+  function applyFit(){ body.classList.toggle('fit',f); if(tFit){tFit.classList.toggle('on',f);tFit.setAttribute('aria-pressed',f?'true':'false');} }
+  applyFit();
+  if(tFit) tFit.addEventListener('click',function(){ f=!f; localStorage.setItem(KEY_F,f?'1':'0'); applyFit(); });
+  var tRead=document.getElementById('tRead');
+  var r=localStorage.getItem(KEY_R)==='1';
+  function applyRead(){ body.classList.toggle('reading',r); if(tRead){tRead.classList.toggle('on',r);tRead.setAttribute('aria-pressed',r?'true':'false');} }
+  applyRead();
+  if(tRead) tRead.addEventListener('click',function(){ r=!r; localStorage.setItem(KEY_R,r?'1':'0'); applyRead(); });
+})();
+</script>
+</body>
+</html>

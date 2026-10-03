@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frozen Shoulder — Mobility Interventions · MSK Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f2e7; --paper2:#efe8d8; --card:#fdfbf5;
+    --ink:#2b2620; --dim:#7a7268; --rule:#e3dbca;
+    --navy:#1e3a5f; --accent:#a8621e; --hl:#f6e7a8; --key:#fbf3df; --keyline:#c58a2e;
+    --serif:'Literata','Iowan Old Style',Palatino,Georgia,serif;
+    --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--serif); font-size:19.5px; line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---- reading chrome ---- */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:400;transition:width .1s linear}
+  .topbar{position:sticky;top:0;z-index:300;background:rgba(247,242,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+  .topbar-in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 22px}
+  .back{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--dim);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .back:hover{color:var(--navy)}
+  .topbar .doc{font-family:var(--sans);font-size:12px;color:var(--dim);margin-left:auto;letter-spacing:.02em}
+  .wrap{max-width:760px;margin:0 auto;padding:34px 22px 90px}
+  /* ---- header ---- */
+  header.doc-head{padding:22px 0 26px;border-bottom:2px solid var(--rule);margin-bottom:8px}
+  .kicker{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-family:var(--serif);font-size:clamp(30px,5.2vw,42px);line-height:1.16;font-weight:600;letter-spacing:-.01em;margin:0 0 14px;color:var(--navy)}
+  .sub{font-family:var(--sans);font-size:13px;color:var(--dim);line-height:1.6}
+  /* ---- headings ---- */
+  h2{font-family:var(--serif);font-size:1.42rem;font-weight:600;color:var(--navy);margin:44px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+  h3{font-family:var(--serif);font-size:1.12rem;font-weight:600;margin:26px 0 6px;color:var(--ink)}
+  p{margin:0 0 15px}
+  ul{margin:0 0 16px;padding-left:24px}
+  li{margin:0 0 9px;padding-left:4px}
+  li::marker{color:var(--accent)}
+  b,strong{font-weight:600}
+  /* ---- highlights & key ---- */
+  mark{background:var(--hl);padding:1px 5px;border-radius:3px;font-weight:600;color:var(--ink)}
+  .key{background:var(--key);border-left:4px solid var(--keyline);padding:14px 18px;margin:20px 0;border-radius:6px;font-size:.97rem;line-height:1.66}
+  .key b{color:var(--navy)}
+  /* ---- glossary term ---- */
+  .g{border-bottom:1.5px dotted var(--accent);cursor:help;padding-bottom:.5px;transition:background .15s}
+  .g:hover{background:rgba(168,98,30,.10)}
+  .g:focus{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+  /* ---- popover ---- */
+  #pop{position:absolute;z-index:500;max-width:330px;width:max-content;background:#231f19;color:#f3ece0;border-radius:12px;padding:14px 17px 15px;box-shadow:0 16px 44px rgba(0,0,0,.34);font-family:var(--sans);font-size:13.5px;line-height:1.55;opacity:0;transform:translateY(6px) scale(.98);pointer-events:none;transition:opacity .16s ease,transform .16s ease}
+  #pop.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+  #pop .pt{display:block;font-family:var(--serif);font-weight:600;font-size:15px;color:#f0c98a;margin-bottom:5px;text-transform:capitalize}
+  #pop .pd{display:block}
+  #pop .arrow{position:absolute;width:12px;height:12px;background:#231f19;transform:rotate(45deg)}
+  /* ---- figures ---- */
+  figure{margin:26px 0;text-align:center}
+  svg{width:100%;height:auto;background:var(--card);border:1px solid var(--rule);border-radius:10px}
+  figcaption{font-family:var(--sans);font-size:12.5px;color:var(--dim);margin-top:9px;font-style:italic;line-height:1.5}
+  /* ---- table ---- */
+  .tbl-wrap{overflow-x:auto;margin:18px 0 24px;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+  table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px}
+  th,td{border-bottom:1px solid var(--rule);padding:11px 14px;text-align:left;vertical-align:top}
+  th{background:var(--navy);color:#fff;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+  tbody tr:nth-child(even) td{background:rgba(30,58,95,.035)}
+  tbody tr:last-child td{border-bottom:none}
+  /* ---- footnote ---- */
+  .src{font-family:var(--sans);font-size:12px;color:var(--dim);margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;line-height:1.6}
+  /* ---- next ---- */
+  .next{display:flex;justify-content:space-between;gap:14px;margin-top:34px}
+  .next a{font-family:var(--sans);font-size:13px;color:var(--navy);text-decoration:none;border:1px solid var(--rule);border-radius:10px;padding:12px 18px;background:var(--card)}
+  .next a:hover{border-color:var(--accent);color:var(--accent)}
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#191919;--paper2:#222;--card:#222;--ink:#e8e2d6;--dim:#a49b8b;--rule:#34302a;--navy:#a9c4e0;--accent:#e0a45c;--hl:#5a4d18;--key:#262117;--keyline:#b9852f}
+    .topbar{background:rgba(25,25,25,.92)}
+    #pop{background:#f3ece0;color:#231f19}
+    #pop .pt{color:#8a5a10}
+    #pop .arrow{background:#f3ece0}
+  }
+  @media (max-width:560px){
+    body{font-size:18.5px}
+    .wrap{padding:24px 18px 70px}
+  }
+  @media print{.topbar,.progress,#pop,.next{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="topbar"><div class="topbar-in">
+  <a class="back" href="index.html">&larr; Library</a>
+  <span class="doc">Frozen Shoulder &middot; Long Essay</span>
+</div></div>
+
+<div class="wrap">
+
+<header class="doc-head">
+  <div class="kicker">Physiotherapy Interventions in Musculoskeletal Disorders &middot; Long essay</div>
+  <h1>Discuss the interventions to improve the mobility of the shoulder joint following adhesive capsulitis</h1>
+  <div class="sub">Paper IV (RS-4) &nbsp;&middot;&nbsp; Nov 2025 &nbsp;&middot;&nbsp; QP Code 8132 &nbsp;&middot;&nbsp; 10 marks &nbsp;&middot;&nbsp; Tap any <span style="border-bottom:1.5px dotted var(--accent)">dotted term</span> for a plain-language definition.</div>
+</header>
+
+<h2>1. Introduction</h2>
+<p><span class="g" data-t="adhesive capsulitis" tabindex="0">Adhesive capsulitis</span> ("frozen shoulder") is a stiff, painful shoulder with no other cause.</p>
+<div class="key"><b>Definition:</b> a condition of uncertain cause, with significant loss of both <mark>active and passive</mark> shoulder movement, in the absence of a known intrinsic shoulder disorder.</div>
+<ul>
+  <li>Affects <mark>2&ndash;5%</mark> of adults.</li>
+  <li>Commonest between <mark>40 and 70 years</mark>.</li>
+  <li>More common in <mark>women</mark>.</li>
+  <li>Linked to <mark>diabetes</mark> and <mark>thyroid disease</mark>.</li>
+  <li>Hallmark: near-total loss of <span class="g" data-t="external rotation" tabindex="0">external rotation</span>.</li>
+</ul>
+<p>Since the disability is a loss of movement, every intervention aims to <mark>relieve pain</mark> and <mark>restore movement</mark>.</p>
+
+<h2>2. Why mobility is lost</h2>
+<p>The joint capsule goes through a fixed sequence:</p>
+<ul>
+  <li><b>Inflammation</b> of the capsule and <span class="g" data-t="synovium" tabindex="0">synovium</span>.</li>
+  <li><b><span class="g" data-t="fibrosis" tabindex="0">Fibrosis</span></b> &mdash; scar tissue forms in the capsule.</li>
+  <li><b><span class="g" data-t="contracture" tabindex="0">Contracture</span></b> &mdash; the capsule shrinks and tightens.</li>
+</ul>
+<p>The tightening is worst at the front of the joint, around the <span class="g" data-t="rotator interval" tabindex="0">rotator interval</span> and <span class="g" data-t="coracohumeral ligament (CHL)" tabindex="0">coracohumeral ligament (CHL)</span>.</p>
+<div class="key"><b><span class="g" data-t="capsular pattern" tabindex="0">Capsular pattern</span>:</b> <mark>external rotation lost most &rarr; abduction &rarr; internal rotation least</mark>.</div>
+<p>The condition passes through three overlapping stages, and the treatment must change with each one.</p>
+
+<figure>
+<svg viewBox="0 0 660 340" role="img" aria-label="Simple sketch of the shoulder joint">
+  <path d="M215 90 C 330 15 480 70 480 170 C 480 270 330 325 215 250" fill="none" stroke="#1e3a5f" stroke-width="9" stroke-linecap="round"/>
+  <path d="M225 90 Q 180 170 225 250" fill="none" stroke="#8a8f98" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="345" cy="170" r="80" fill="#f0e2d4" stroke="#b08a6a" stroke-width="3"/>
+  <rect x="415" y="140" width="150" height="60" rx="10" fill="#f0e2d4" stroke="#b08a6a" stroke-width="3"/>
+  <path d="M300 92 C 340 68 380 76 402 96" fill="none" stroke="#b0392b" stroke-width="10" stroke-linecap="round"/>
+  <text x="345" y="176" font-size="17" text-anchor="middle" fill="#6b4a2e">Humeral head</text>
+  <text x="20" y="152" font-size="17" fill="#33475a">Glenoid</text>
+  <text x="20" y="174" font-size="17" fill="#33475a">(socket)</text>
+  <line x1="108" y1="162" x2="205" y2="170" stroke="#8a8f98" stroke-width="2"/>
+  <text x="498" y="48" font-size="17" fill="#1e3a5f">Joint capsule</text>
+  <line x1="528" y1="56" x2="472" y2="120" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="228" y="38" font-size="16" fill="#b0392b">Rotator interval + CHL</text>
+  <line x1="300" y1="44" x2="330" y2="80" stroke="#b0392b" stroke-width="2"/>
+</svg>
+<figcaption>Fig. 1 &mdash; Ball-and-socket sketch: the humeral head sits in the glenoid; the capsule wraps it, and the front (rotator interval + CHL) is where it tightens.</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 660 340" role="img" aria-label="Pain and stiffness across the three stages">
+  <rect x="70" y="40" width="180" height="240" fill="#fbeaea"/>
+  <rect x="250" y="40" width="130" height="240" fill="#eaf1f6"/>
+  <rect x="380" y="40" width="240" height="240" fill="#eaf3e6"/>
+  <line x1="70" y1="280" x2="630" y2="280" stroke="#999" stroke-width="2"/>
+  <line x1="70" y1="40" x2="70" y2="280" stroke="#999" stroke-width="2"/>
+  <text x="160" y="62" font-size="15" text-anchor="middle" fill="#b0392b">Freezing</text>
+  <text x="315" y="62" font-size="15" text-anchor="middle" fill="#1e3a5f">Frozen</text>
+  <text x="500" y="62" font-size="15" text-anchor="middle" fill="#4a7a2e">Thawing</text>
+  <polyline points="70,245 140,110 220,150 330,225 470,250 620,258" fill="none" stroke="#b0392b" stroke-width="3"/>
+  <polyline points="70,258 160,195 290,100 360,98 460,155 620,248" fill="none" stroke="#1e3a5f" stroke-width="3"/>
+  <line x1="90" y1="310" x2="130" y2="310" stroke="#b0392b" stroke-width="3"/>
+  <text x="140" y="315" font-size="15" fill="#333">Pain</text>
+  <line x1="215" y1="310" x2="255" y2="310" stroke="#1e3a5f" stroke-width="3"/>
+  <text x="265" y="315" font-size="15" fill="#333">Stiffness</text>
+  <text x="625" y="305" font-size="14" fill="#666" text-anchor="end">Time (months) &rarr;</text>
+</svg>
+<figcaption>Fig. 2 &mdash; Pain peaks early; stiffness dominates the middle stage; both settle during thawing.</figcaption>
+</figure>
+
+<div class="tbl-wrap"><table>
+  <tr><th>Stage</th><th>Duration</th><th>Main problem</th></tr>
+  <tr><td>1 &mdash; Freezing (painful)</td><td>2&ndash;9 months</td><td>Severe pain, worse at night; motion starts to fall</td></tr>
+  <tr><td>2 &mdash; Frozen (adhesive)</td><td>4&ndash;12 months</td><td>Pain eases; stiffness dominates</td></tr>
+  <tr><td>3 &mdash; Thawing</td><td>5&ndash;26 months</td><td>Movement returns gradually; shoulder is weak</td></tr>
+</table></div>
+
+<h2>3. Aims of intervention</h2>
+<ul>
+  <li><mark>Relieve pain</mark> &mdash; pain blocks movement, so it comes first.</li>
+  <li><mark>Restore and preserve movement</mark> &mdash; the main goal, especially external rotation.</li>
+  <li><mark>Rebuild strength</mark> and <span class="g" data-t="scapular stabilisers" tabindex="0">scapular control</span>.</li>
+  <li><mark>Restore function</mark> &mdash; daily activities, work, sport.</li>
+  <li><mark>Educate</mark> and set realistic expectations.</li>
+</ul>
+
+<h2>4. Guiding principles</h2>
+<ul>
+  <li><b>Symptom-limited:</b> stretch <mark>below the pain threshold</mark>. Aggressive stretching makes it worse.</li>
+  <li><b>Match the stage:</b> the right exercise differs in each phase.</li>
+  <li><b>Match the <span class="g" data-t="irritability" tabindex="0">irritability</span>:</b> how easily pain flares decides how hard you push.</li>
+  <li><b>Multimodal:</b> combined treatment beats any single method.</li>
+</ul>
+
+<h2>5. Interventions to improve mobility</h2>
+
+<h3>5.1 Education and reassurance</h3>
+<ul>
+  <li>Explain the natural history and that recovery is slow.</li>
+  <li>Reduces frustration and improves compliance.</li>
+  <li>Be honest: <mark>full range may not return</mark>.</li>
+</ul>
+
+<h3>5.2 Pain control &mdash; the prerequisite</h3>
+<ul>
+  <li><span class="g" data-t="NSAIDs" tabindex="0">NSAIDs</span> first-line for pain.</li>
+  <li><span class="g" data-t="corticosteroid injection" tabindex="0">Corticosteroid injection</span> &mdash; best in the early freezing stage.</li>
+  <li>Heat before exercise, ice after.</li>
+  <li><span class="g" data-t="TENS" tabindex="0">TENS</span>, ultrasound, <span class="g" data-t="cryotherapy" tabindex="0">cryotherapy</span> as adjuncts.</li>
+</ul>
+
+<h3>5.3 Joint mobilisation and manual therapy</h3>
+<ul>
+  <li><span class="g" data-t="accessory glides" tabindex="0">Accessory glides</span> stretch the tight capsule.</li>
+  <li><mark>Posterior and inferior glides</mark> are less painful and more effective than anterior glides.</li>
+  <li>Target the <mark>rotator interval and CHL</mark> to regain external rotation.</li>
+  <li>Irritable shoulder &rarr; <span class="g" data-t="mid-range" tabindex="0">mid-range</span>; stiff shoulder &rarr; <span class="g" data-t="end-range mobilisation" tabindex="0">end-range</span> mobilisation.</li>
+</ul>
+
+<h3>5.4 Stretching</h3>
+<ul>
+  <li>Sustained self-stretch, hold <mark>15&ndash;30 seconds</mark>.</li>
+  <li>Stay pain-free early; progress to "tolerable discomfort".</li>
+  <li>Stretch the chest muscles and the posterior capsule.</li>
+  <li><mark>Regain rotation before elevation.</mark></li>
+</ul>
+
+<h3>5.5 Range-of-motion exercises</h3>
+<ul>
+  <li><span class="g" data-t="pendulum (Codman's)" tabindex="0">Pendulum</span> (Codman's) &mdash; gravity-assisted.</li>
+  <li><mark>Wand/stick</mark> exercises &mdash; the good arm assists.</li>
+  <li><mark>Pulley</mark> exercises for overhead movement.</li>
+  <li>Passive external rotation; active-assisted extension and internal rotation.</li>
+  <li>Home programme <mark>3&ndash;5 times a day</mark>, with a stretch at end range.</li>
+</ul>
+
+<h3>5.6 Strengthening to hold the gain</h3>
+<ul>
+  <li>Progress in order: <span class="g" data-t="isometric" tabindex="0">isometric</span> &rarr; <span class="g" data-t="Theraband" tabindex="0">Theraband</span> &rarr; free weights.</li>
+  <li>Train the <span class="g" data-t="rotator cuff" tabindex="0">rotator cuff</span>, deltoid and scapular stabilisers.</li>
+  <li>Correct the forward-shoulder posture.</li>
+</ul>
+
+<h3>5.7 Hydrodilatation</h3>
+<ul>
+  <li><span class="g" data-t="hydrodilatation" tabindex="0">Hydrodilatation</span> &mdash; fluid (saline + steroid + anaesthetic) is injected to stretch the capsule.</li>
+  <li>Used for the stiff stage; always followed by physiotherapy.</li>
+</ul>
+
+<h3>5.8 Surgery for <span class="g" data-t="refractory" tabindex="0">refractory</span> cases</h3>
+<ul>
+  <li><span class="g" data-t="manipulation under anaesthesia (MUA)" tabindex="0">Manipulation under anaesthesia (MUA)</span> &mdash; the capsule is torn while asleep.</li>
+  <li><span class="g" data-t="arthroscopic capsular release" tabindex="0">Arthroscopic capsular release</span> &mdash; the capsule is cut under vision.</li>
+  <li>Both need <mark>immediate physiotherapy</mark> afterwards.</li>
+</ul>
+
+<h3>5.9 Precautions</h3>
+<ul>
+  <li>Never stretch beyond the pain threshold &mdash; it worsens the fibrosis.</li>
+  <li>Avoid a forward-shoulder posture.</li>
+  <li>Rule out a <span class="g" data-t="cuff tear" tabindex="0">cuff tear</span>, <span class="g" data-t="osteoarthritis" tabindex="0">osteoarthritis</span> or <span class="g" data-t="calcific tendinitis" tabindex="0">calcific tendinitis</span> first.</li>
+  <li>In diabetes and thyroid disease, recovery is slower.</li>
+</ul>
+
+<h2>6. Matching the intervention to the stage</h2>
+<p>This is the single most important decision.</p>
+
+<figure>
+<svg viewBox="0 0 660 465" role="img" aria-label="Stage-wise intervention flowchart">
+  <rect x="50" y="15" width="560" height="95" rx="12" fill="#fbeaea" stroke="#b0392b" stroke-width="2"/>
+  <text x="70" y="48" font-size="17" font-weight="bold" fill="#b0392b">Stage 1 &mdash; Freezing</text>
+  <text x="70" y="76" font-size="15" fill="#333">Education &middot; pain relief (NSAIDs, heat/ice) &middot; steroid injection</text>
+  <text x="70" y="98" font-size="15" fill="#333">Gentle pendulum &amp; wand ROM (1&ndash;5 s) &mdash; do not force</text>
+  <line x1="330" y1="110" x2="330" y2="133" stroke="#888" stroke-width="3"/>
+  <path d="M322 133 L330 145 L338 133 Z" fill="#888"/>
+  <rect x="50" y="145" width="560" height="95" rx="12" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="70" y="178" font-size="17" font-weight="bold" fill="#1e3a5f">Stage 2 &mdash; Frozen</text>
+  <text x="70" y="206" font-size="15" fill="#333">Sustained stretching &middot; posterior/inferior glides</text>
+  <text x="70" y="228" font-size="15" fill="#333">Rotator-interval mobilisation &middot; hydrodilatation &middot; start isometrics</text>
+  <line x1="330" y1="240" x2="330" y2="263" stroke="#888" stroke-width="3"/>
+  <path d="M322 263 L330 275 L338 263 Z" fill="#888"/>
+  <rect x="50" y="275" width="560" height="95" rx="12" fill="#eaf3e6" stroke="#4a7a2e" stroke-width="2"/>
+  <text x="70" y="308" font-size="17" font-weight="bold" fill="#4a7a2e">Stage 3 &mdash; Thawing</text>
+  <text x="70" y="336" font-size="15" fill="#333">Maintain ROM &middot; strengthen: isometric &rarr; Theraband &rarr; weights</text>
+  <text x="70" y="358" font-size="15" fill="#333">Rotator cuff + scapular stabilisers &middot; postural correction</text>
+  <rect x="50" y="385" width="560" height="62" rx="12" fill="#fdf3e0" stroke="#b07a1e" stroke-width="2"/>
+  <text x="70" y="410" font-size="15" font-weight="bold" fill="#8a5a10">Refractory &mdash; no gain after ~3&ndash;6 months of therapy</text>
+  <text x="70" y="433" font-size="15" fill="#333">MUA or arthroscopic capsular release, then immediate physiotherapy</text>
+</svg>
+<figcaption>Fig. 3 &mdash; Simple stage-wise flow: pain first, then movement, then strength.</figcaption>
+</figure>
+
+<div class="tbl-wrap"><table>
+  <tr><th>Stage</th><th>Focus</th><th>Key interventions</th></tr>
+  <tr><td>1 &mdash; Freezing</td><td>Pain relief; keep motion</td><td>Education, NSAIDs, steroid injection, heat/ice, gentle pendulum &amp; wand ROM (1&ndash;5 s)</td></tr>
+  <tr><td>2 &mdash; Frozen</td><td>Regain range</td><td>Sustained stretching, posterior/inferior glides, hydrodilatation, start isometrics</td></tr>
+  <tr><td>3 &mdash; Thawing</td><td>Restore strength</td><td>Maintain ROM, progress isometric &rarr; Theraband &rarr; weights, scapular work</td></tr>
+  <tr><td>Refractory</td><td>Accelerate recovery</td><td>MUA or arthroscopic capsular release, then immediate physiotherapy</td></tr>
+</table></div>
+
+<h2>7. Evidence and expected outcome</h2>
+<ul>
+  <li>Physiotherapy <mark>+ NSAIDs</mark> beats NSAIDs alone.</li>
+  <li>Injection <mark>+ physiotherapy</mark> beats injection alone.</li>
+  <li>Non-operative success reported up to <mark>89.5%</mark>.</li>
+  <li>But <mark>20&ndash;50%</mark> have lasting stiffness &mdash; external rotation worst.</li>
+  <li>Severe symptoms at onset, and diabetes, mean a worse course.</li>
+</ul>
+<p>Track progress with <span class="g" data-t="goniometry" tabindex="0">goniometry</span> (external rotation), a <span class="g" data-t="pain score" tabindex="0">pain score</span>, and shoulder function questionnaires (<span class="g" data-t="SPADI" tabindex="0">SPADI</span>, <span class="g" data-t="DASH" tabindex="0">DASH</span>, <span class="g" data-t="ASES" tabindex="0">ASES</span>).</p>
+
+<h2>8. Conclusion</h2>
+<p>Improving mobility is not one technique but a staged, symptom-limited programme.</p>
+<ul>
+  <li>Control pain first &mdash; it blocks movement.</li>
+  <li>Restore range with gentle ROM work, targeted mobilisation, and progressive stretching.</li>
+  <li>Hold the gain with strengthening and posture.</li>
+  <li>Add hydrodilatation, and surgery only if refractory.</li>
+</ul>
+<div class="key">Because the tissue changes from inflammation &rarr; fibrosis &rarr; recovery, <mark>no single programme fits all three stages</mark>. Match the treatment to the stage and to the patient's irritability &mdash; and never push past the pain threshold.</div>
+
+<p class="src">Sources: Chan, Pua &amp; How, <i>Singapore Med J</i> 2017;58(12):685&ndash;689; textbook chapter "Adhesive Capsulitis (Frozen Shoulder)", Ch. 25, Section 3: Shoulder Injuries (incl. Rehabilitation Protocol 25.1); Mayo Clinic; AAOS OrthoInfo; StatPearls.</p>
+
+<div class="next">
+  <a href="index.html">&larr; Back to library</a>
+  <a href="paper4.html">Paper 4 &middot; Interventions &rarr;</a>
+</div>
+
+</div>
+
+<div id="pop" role="dialog" aria-live="polite"><span class="pt"></span><span class="pd"></span><span class="arrow"></span></div>
+
+<script>
+const GLOSSARY = {
+  "adhesive capsulitis":"Also called 'frozen shoulder'. A condition of uncertain cause with a significant loss of both active and passive shoulder movement, without a known intrinsic shoulder disorder.",
+  "rotator interval":"The gap in the front of the shoulder capsule between the supraspinatus and subscapularis tendons. It tightens in frozen shoulder and limits external rotation.",
+  "coracohumeral ligament (CHL)":"A strong ligament running from the coracoid process to the humerus. It forms part of the rotator interval and becomes thick and tight in frozen shoulder.",
+  "capsular pattern":"The order in which a joint loses movement when the capsule itself is the problem. At the shoulder: external rotation is lost most, then abduction, then internal rotation least.",
+  "synovium":"The thin lining inside the joint that makes synovial fluid. It becomes inflamed in the early freezing stage.",
+  "fibrosis":"Scar-tissue formation. In frozen shoulder, fibrous tissue builds up in the joint capsule, making it stiff.",
+  "contracture":"Shortening and tightening of tissue (here the joint capsule) so it can no longer stretch to its normal length.",
+  "external rotation":"Turning the arm outward, away from the body. The movement lost first in frozen shoulder.",
+  "abduction":"Lifting the arm sideways, away from the body, up towards the head.",
+  "internal rotation":"Turning the arm inward, towards the body.",
+  "accessory glides":"Small passive sliding movements the therapist applies to a joint to stretch the capsule and restore normal glide. At the shoulder, posterior and inferior glides are preferred.",
+  "joint mobilisation":"Passive, graded movement of a joint by the therapist to reduce pain and restore range.",
+  "end-range mobilisation":"Mobilisation applied near the limit of available movement. Used for a stiff, low-irritability shoulder.",
+  "mid-range":"Mobilisation applied in the middle of the available range. Used when the shoulder is irritable and painful.",
+  "hydrodilatation":"Also 'hydraulic distension'. Fluid \u2014 saline plus steroid and anaesthetic \u2014 is injected into the joint under pressure to stretch the tight capsule.",
+  "manipulation under anaesthesia (MUA)":"A procedure where the shoulder is moved forcefully while the patient is asleep, tearing the tight capsule to free the joint.",
+  "arthroscopic capsular release":"Keyhole surgery in which the tight capsule is cut under direct vision to restore movement.",
+  "refractory":"Not responding to treatment \u2014 here, a shoulder that fails to improve after several months of therapy.",
+  "isometric":"A muscle contraction with no joint movement \u2014 the muscle tightens but the joint angle stays the same.",
+  "theraband":"A colour-coded elastic resistance band used to progressively load muscles as strength returns.",
+  "rotator cuff":"The group of four muscles and tendons (supraspinatus, infraspinatus, teres minor, subscapularis) that stabilise and rotate the shoulder.",
+  "scapular stabilisers":"Muscles that control the shoulder blade (scapula), such as trapezius, serratus anterior and rhomboids.",
+  "pendulum (codman's)":"A gravity-assisted exercise: the arm hangs and swings in small circles, letting gravity gently move the joint.",
+  "nsaids":"Non-steroidal anti-inflammatory drugs \u2014 painkillers such as ibuprofen that also reduce inflammation.",
+  "corticosteroid injection":"An injection of a strong anti-inflammatory drug into or around the joint to reduce pain. Most useful in the early freezing stage.",
+  "tens":"Transcutaneous electrical nerve stimulation \u2014 a device that delivers mild electrical pulses through the skin to relieve pain.",
+  "cryotherapy":"Treatment using cold (ice packs) to reduce pain and inflammation, typically after exercise.",
+  "irritability":"How easily a shoulder's pain flares up with movement. It guides how hard you can push treatment.",
+  "goniometry":"Measuring joint range of motion with a goniometer, a protractor-like tool.",
+  "calcific tendinitis":"Calcium deposits in a shoulder tendon causing pain. It must be ruled out before treating frozen shoulder.",
+  "osteoarthritis":"Wear-and-tear degeneration of the joint surfaces, causing stiffness and pain.",
+  "cuff tear":"A tear of the rotator cuff tendons, which also causes weakness and pain and must be excluded first.",
+  "spadi":"Shoulder Pain and Disability Index \u2014 an outcome-measure questionnaire scoring shoulder pain and difficulty with daily activities.",
+  "dash":"Disabilities of the Arm, Shoulder and Hand \u2014 an outcome-measure questionnaire of upper-limb function and symptoms.",
+  "ases":"American Shoulder and Elbow Surgeons score \u2014 a standard outcome-measure questionnaire for shoulder function.",
+  "pain score":"A patient-rated number (usually 0\u201310) describing how bad the pain is.",
+  "range of motion":"The amount of movement available at a joint, measured in degrees."
+};
+
+const pop = document.getElementById('pop');
+const pt = pop.querySelector('.pt');
+const pd = pop.querySelector('.pd');
+const arrow = pop.querySelector('.arrow');
+let current = null;
+
+function show(el){
+  const key = el.getAttribute('data-t');
+  const def = GLOSSARY[key.toLowerCase()];
+  if(!def) return;
+  pt.textContent = key;
+  pd.textContent = def;
+  current = el;
+  pop.classList.add('show');
+  position(el);
+}
+function position(el){
+  const r = el.getBoundingClientRect();
+  const sx = window.scrollX, sy = window.scrollY;
+  pop.style.left = '0px'; pop.style.top = '0px';
+  const pw = pop.offsetWidth, ph = pop.offsetHeight;
+  let left = r.left + sx + r.width/2 - pw/2;
+  left = Math.max(12 + sx, Math.min(left, sx + document.documentElement.clientWidth - pw - 12));
+  let top = r.bottom + sy + 12;
+  let above = false;
+  if(r.bottom + ph + 24 > window.innerHeight){ top = r.top + sy - ph - 12; above = true; }
+  pop.style.left = left + 'px';
+  pop.style.top = top + 'px';
+  arrow.style.left = Math.max(14, Math.min(r.left + sx + r.width/2 - left - 6, pw - 26)) + 'px';
+  arrow.style.top = above ? (ph - 6) + 'px' : '-6px';
+}
+function hide(){ pop.classList.remove('show'); current = null; }
+
+document.querySelectorAll('.g').forEach(el=>{
+  el.addEventListener('click', e=>{ e.preventDefault(); if(current===el){hide();} else {show(el);} });
+  el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(el);} });
+});
+document.addEventListener('click', e=>{ if(!e.target.closest('.g') && !e.target.closest('#pop')) hide(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') hide(); });
+window.addEventListener('scroll', ()=>{ if(current) position(current); }, {passive:true});
+window.addEventListener('resize', ()=>{ if(current) position(current); });
+
+const prog = document.getElementById('prog');
+function onScroll(){
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+</script>
+</body>
+</html>

@@ -106,12 +106,16 @@
   .refbox{margin-top:34px;background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:20px 22px}
   .refbox .rb-t{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
   .refbox .rb-p{font-family:var(--sans);font-size:13.5px;color:var(--dim);margin:6px 0 14px;line-height:1.55}
-  .refbox .rb-actions{display:flex;flex-wrap:wrap;gap:10px}
-  .refbox a{font-family:var(--sans);font-size:13px;font-weight:600;text-decoration:none;border-radius:9px;padding:10px 16px;border:1px solid var(--rule)}
-  .refbox a.rb-open{background:var(--navy);color:#fff;border-color:var(--navy)}
-  .refbox a.rb-open:hover{opacity:.92}
-  .refbox a.rb-dl{color:var(--navy)}
-  .refbox a.rb-dl:hover{border-color:var(--accent);color:var(--accent)}
+  .refbox .rb-list{list-style:none;margin:0;padding:0}
+  .refbox .rb-list li{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--rule)}
+  .refbox .rb-list li:first-child{border-top:none;padding-top:0}
+  .refbox .rb-name{font-family:var(--sans);font-size:13.5px;color:var(--ink);line-height:1.45;flex:1;min-width:190px}
+  .refbox .rb-links{display:flex;gap:8px;flex-shrink:0}
+  .refbox .rb-links a{font-family:var(--sans);font-size:12px;font-weight:600;text-decoration:none;border-radius:8px;padding:8px 14px;border:1px solid var(--rule)}
+  .refbox .rb-links a.rb-open{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .refbox .rb-links a.rb-open:hover{opacity:.92}
+  .refbox .rb-links a.rb-dl{color:var(--navy)}
+  .refbox .rb-links a.rb-dl:hover{border-color:var(--accent);color:var(--accent)}
   /* ===== reading controls (toolbar) ===== */
   :root{--ui-bg:#ffffff;--ui-ink:#1f2a37;--ui-line:rgba(20,30,50,.16);--ui-hover:rgba(20,30,50,.07);--ui-on:#e9f0f8}
   @media (prefers-color-scheme:dark){:root{--ui-bg:#22242c;--ui-ink:#ece6da;--ui-line:rgba(255,255,255,.18);--ui-hover:rgba(255,255,255,.09);--ui-on:#2c3a4a}}
@@ -367,12 +371,12 @@
 <p class="src">Sources: Chan, Pua &amp; How, <i>Singapore Med J</i> 2017;58(12):685&ndash;689; textbook chapter "Adhesive Capsulitis (Frozen Shoulder)", Ch. 25, Section 3: Shoulder Injuries (incl. Rehabilitation Protocol 25.1); Mayo Clinic; AAOS OrthoInfo; StatPearls.</p>
 
 <div class="refbox">
-  <div class="rb-t">References</div>
-  <p class="rb-p">The reference list for this essay, as a one-page PDF &mdash; open it in your browser or download it.</p>
-  <div class="rb-actions">
-    <a class="rb-open" href="Frozen-Shoulder-References.pdf" target="_blank" rel="noopener">Open references (PDF)</a>
-    <a class="rb-dl" href="Frozen-Shoulder-References.pdf" download>Download PDF</a>
-  </div>
+  <div class="rb-t">Sources &amp; references</div>
+  <p class="rb-p">Original documents for this essay &mdash; view in your browser or download.</p>
+  <ul class="rb-list">
+<li><span class="rb-name">Reference list (PDF)</span><span class="rb-links"><a class="rb-open" href="Frozen-Shoulder-References.pdf" target="_blank" rel="noopener">View</a><a class="rb-dl" href="Frozen-Shoulder-References.pdf" download>Download</a></span></li>
+<li><span class="rb-name">Chan, Pua & How — Physical therapy in the management of frozen shoulder (Singapore Med J, 2017)</span><span class="rb-links"><a class="rb-open" href="Frozen_shoulder.pdf" target="_blank" rel="noopener">View</a><a class="rb-dl" href="Frozen_shoulder.pdf" download>Download</a></span></li>
+  </ul>
 </div>
 <div class="next">
   <a href="index.html">&larr; Back to library</a>

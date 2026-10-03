@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic Assessment Methods for MSK Diagnosis · MSK Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f2e7; --paper2:#efe8d8; --card:#fdfbf5;
+    --ink:#2b2620; --dim:#7a7268; --rule:#e3dbca;
+    --navy:#1e3a5f; --accent:#a8621e; --hl:#f6e7a8; --key:#fbf3df; --keyline:#c58a2e;
+    --serif:'Literata','Iowan Old Style',Palatino,Georgia,serif;
+    --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--serif); font-size:19.5px; line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:400;transition:width .1s linear}
+  .topbar{position:sticky;top:0;z-index:300;background:rgba(247,242,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+  .topbar-in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 22px}
+  .back{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--dim);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .back:hover{color:var(--navy)}
+  .topbar .doc{font-family:var(--sans);font-size:12px;color:var(--dim);margin-left:auto;letter-spacing:.02em}
+  .wrap{max-width:760px;margin:0 auto;padding:34px 22px 90px}
+  header.doc-head{padding:22px 0 26px;border-bottom:2px solid var(--rule);margin-bottom:8px}
+  .kicker{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-family:var(--serif);font-size:clamp(29px,5vw,40px);line-height:1.18;font-weight:600;letter-spacing:-.01em;margin:0 0 14px;color:var(--navy)}
+  .sub{font-family:var(--sans);font-size:13px;color:var(--dim);line-height:1.6}
+  h2{font-family:var(--serif);font-size:1.42rem;font-weight:600;color:var(--navy);margin:44px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+  h3{font-family:var(--serif);font-size:1.12rem;font-weight:600;margin:26px 0 6px;color:var(--ink)}
+  h4{font-family:var(--sans);font-size:.9rem;font-weight:600;letter-spacing:.02em;margin:18px 0 4px;color:var(--accent);text-transform:uppercase}
+  p{margin:0 0 15px}
+  ul{margin:0 0 16px;padding-left:24px}
+  li{margin:0 0 9px;padding-left:4px}
+  li::marker{color:var(--accent)}
+  b,strong{font-weight:600}
+  mark{background:var(--hl);padding:1px 5px;border-radius:3px;font-weight:600;color:var(--ink)}
+  .key{background:var(--key);border-left:4px solid var(--keyline);padding:14px 18px;margin:20px 0;border-radius:6px;font-size:.97rem;line-height:1.66}
+  .key b{color:var(--navy)}
+  .g{border-bottom:1.5px dotted var(--accent);cursor:help;padding-bottom:.5px;transition:background .15s}
+  .g:hover{background:rgba(168,98,30,.10)}
+  .g:focus{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+  #pop{position:absolute;z-index:500;max-width:330px;width:max-content;background:#231f19;color:#f3ece0;border-radius:12px;padding:14px 17px 15px;box-shadow:0 16px 44px rgba(0,0,0,.34);font-family:var(--sans);font-size:13.5px;line-height:1.55;opacity:0;transform:translateY(6px) scale(.98);pointer-events:none;transition:opacity .16s ease,transform .16s ease}
+  #pop.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+  #pop .pt{display:block;font-family:var(--serif);font-weight:600;font-size:15px;color:#f0c98a;margin-bottom:5px;text-transform:capitalize}
+  #pop .pd{display:block}
+  #pop .arrow{position:absolute;width:12px;height:12px;background:#231f19;transform:rotate(45deg)}
+  figure{margin:26px 0;text-align:center}
+  svg{width:100%;height:auto;background:var(--card);border:1px solid var(--rule);border-radius:10px}
+  figcaption{font-family:var(--sans);font-size:12.5px;color:var(--dim);margin-top:9px;font-style:italic;line-height:1.5}
+  .tbl-wrap{overflow-x:auto;margin:18px 0 24px;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+  table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px}
+  th,td{border-bottom:1px solid var(--rule);padding:10px 13px;text-align:left;vertical-align:top}
+  th{background:var(--navy);color:#fff;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  tbody tr:nth-child(even) td{background:rgba(30,58,95,.035)}
+  tbody tr:last-child td{border-bottom:none}
+  .src{font-family:var(--sans);font-size:12px;color:var(--dim);margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;line-height:1.6}
+  .next{display:flex;justify-content:space-between;gap:14px;margin-top:34px}
+  .next a{font-family:var(--sans);font-size:13px;color:var(--navy);text-decoration:none;border:1px solid var(--rule);border-radius:10px;padding:12px 18px;background:var(--card)}
+  .next a:hover{border-color:var(--accent);color:var(--accent)}
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#191919;--paper2:#222;--card:#222;--ink:#e8e2d6;--dim:#a49b8b;--rule:#34302a;--navy:#a9c4e0;--accent:#e0a45c;--hl:#5a4d18;--key:#262117;--keyline:#b9852f}
+    .topbar{background:rgba(25,25,25,.92)}
+    #pop{background:#f3ece0;color:#231f19}
+    #pop .pt{color:#8a5a10}
+    #pop .arrow{background:#f3ece0}
+  }
+  @media (max-width:560px){ body{font-size:18.5px} .wrap{padding:24px 18px 70px} }
+  @media print{.topbar,.progress,#pop,.next{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="topbar"><div class="topbar-in">
+  <a class="back" href="index.html">&larr; Library</a>
+  <span class="doc">Assessment Methods &middot; Long Essay</span>
+</div></div>
+
+<div class="wrap">
+
+<header class="doc-head">
+  <div class="kicker">Physical and Functional Diagnosis in Musculoskeletal Disorders &middot; Long essay</div>
+  <h1>Explain in detail the basic assessment methods for the diagnosis of musculoskeletal conditions</h1>
+  <div class="sub">Paper III (RS-3) &nbsp;&middot;&nbsp; Long essay &nbsp;&middot;&nbsp; 10 marks &nbsp;&middot;&nbsp; Structured on the orthopaedic physiotherapy evaluation form &nbsp;&middot;&nbsp; Tap any <span style="border-bottom:1.5px dotted var(--accent)">dotted term</span> for a plain-language definition.</div>
+</header>
+
+<h2>1. Introduction: the musculoskeletal system and its functions</h2>
+<p>The <span class="g" data-t="musculoskeletal system" tabindex="0">musculoskeletal system</span> is the body's framework for movement. It is built from bones, joints, muscles, tendons, ligaments, fascia, cartilage and the nerves that drive and sense them. No single structure works alone: bone gives leverage, muscle gives force, tendon transmits it, the joint directs it, and the capsule and ligaments guide and restrain it.</p>
+<p>Its basic functions are:</p>
+<ul>
+  <li><b>Support and posture</b> &mdash; the skeleton holds the body upright against gravity.</li>
+  <li><b>Movement</b> &mdash; muscles pull on bones across joints to produce purposeful motion.</li>
+  <li><b>Protection</b> &mdash; the skull, rib cage and pelvis shield vital organs.</li>
+  <li><b>Stability and load transfer</b> &mdash; joints, capsules and ligaments direct and absorb force.</li>
+  <li><b>Storage and metabolism</b> &mdash; bone stores calcium and phosphate, and muscle is a protein and energy reserve.</li>
+  <li><b>Sensory feedback</b> &mdash; <span class="g" data-t="proprioception" tabindex="0">proprioceptors</span> in muscle, tendon and joint tell the brain where the body is in space.</li>
+</ul>
+<p>When any of these structures is injured the result is pain, loss of movement, weakness or loss of function. Diagnosis means finding out <mark>which structure is at fault, how badly, and what it stops the patient doing</mark>. A musculoskeletal assessment is the systematic method by which the physiotherapist gathers that information.</p>
+
+<h2>2. Purpose and principles of assessment</h2>
+<p>The assessment is not a search for a label. Its purposes are to reach a <span class="g" data-t="functional diagnosis" tabindex="0">functional diagnosis</span>, to identify the tissue at fault and its stage, to detect <span class="g" data-t="red flags" tabindex="0">red flags</span> that need medical referral, to record a baseline for measuring progress, and to plan treatment.</p>
+<div class="key"><b>Governing principles:</b> take the history first and listen to the patient; test the <mark>normal side first</mark>; do <mark>active movements, then passive, then resisted isometric</mark>; do painful movements last; obtain informed consent and protect dignity; compare both sides and look for patterns; and refer on if the findings lie beyond your scope.</div>
+<p>The whole process divides into two halves and a synthesis:</p>
+<ul>
+  <li><b>Subjective examination</b> &mdash; the history, told by the patient.</li>
+  <li><b>Objective examination</b> &mdash; what the examiner observes, feels and measures.</li>
+  <li><b>Synthesis</b> &mdash; a problem list, a functional diagnosis, goals and a treatment plan.</li>
+</ul>
+
+<figure>
+<svg viewBox="0 0 660 420" role="img" aria-label="Flow of a musculoskeletal assessment">
+  <defs><marker id="ar" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#8a8276"/></marker></defs>
+  <rect x="150" y="14" width="360" height="52" rx="10" fill="#fbeaea" stroke="#b0392b" stroke-width="2"/>
+  <text x="330" y="45" font-size="17" font-weight="bold" text-anchor="middle" fill="#b0392b">1. Subjective examination (history)</text>
+  <line x1="330" y1="66" x2="330" y2="90" stroke="#8a8276" stroke-width="2.5" marker-end="url(#ar)"/>
+  <rect x="150" y="92" width="360" height="52" rx="10" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="330" y="123" font-size="17" font-weight="bold" text-anchor="middle" fill="#1e3a5f">2. Observation</text>
+  <line x1="330" y1="144" x2="330" y2="168" stroke="#8a8276" stroke-width="2.5" marker-end="url(#ar)"/>
+  <rect x="150" y="170" width="360" height="52" rx="10" fill="#eaf1f6" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="330" y="201" font-size="17" font-weight="bold" text-anchor="middle" fill="#1e3a5f">3. Examination (touch, move, measure)</text>
+  <line x1="330" y1="222" x2="330" y2="246" stroke="#8a8276" stroke-width="2.5" marker-end="url(#ar)"/>
+  <rect x="150" y="248" width="360" height="52" rx="10" fill="#eaf3e6" stroke="#4a7a2e" stroke-width="2"/>
+  <text x="330" y="279" font-size="17" font-weight="bold" text-anchor="middle" fill="#4a7a2e">4. Special tests &amp; investigations</text>
+  <line x1="330" y1="300" x2="330" y2="324" stroke="#8a8276" stroke-width="2.5" marker-end="url(#ar)"/>
+  <rect x="120" y="326" width="420" height="70" rx="10" fill="#fdf3e0" stroke="#b07a1e" stroke-width="2"/>
+  <text x="330" y="355" font-size="17" font-weight="bold" text-anchor="middle" fill="#8a5a10">5. Synthesis</text>
+  <text x="330" y="380" font-size="14.5" text-anchor="middle" fill="#333">Problem list &rarr; functional diagnosis &rarr; goals &rarr; plan</text>
+</svg>
+<figcaption>Fig. 1 &mdash; The assessment runs from history, through observation and examination, to special tests, and ends in a diagnosis and plan.</figcaption>
+</figure>
+
+<h2>3. Subjective examination (history)</h2>
+<p>This is the <span class="g" data-t="subjective examination" tabindex="0">subjective examination</span> &mdash; the patient's own account. With experience the examiner can often reach a working diagnosis from the history alone; observation and examination then confirm, alter or refute it.</p>
+
+<h3>3.1 Patient data and referral</h3>
+<p>Record name, age, gender, occupation, address and contact, registration number, civil status, and who referred the patient. Age and occupation are not trivial: the same shoulder pain means different things in a 25-year-old athlete and a 60-year-old sedentary worker, and the job tells you what postures and loads the patient must return to.</p>
+
+<h3>3.2 Chief complaints</h3>
+<p>The <span class="g" data-t="chief complaint" tabindex="0">chief complaint</span> is the patient's main problem in their own words, and how long it has troubled them. It sets the agenda for the whole examination.</p>
+
+<h3>3.3 History</h3>
+<ul>
+  <li><b>Past medical history</b> &mdash; diabetes, heart disease, hypertension, cancer, arthritis and previous surgery all change the picture, the prognosis and what treatment is safe.</li>
+  <li><b>Personal history</b> &mdash; smoking, alcohol, activity and daily habits.</li>
+  <li><b>Family history</b> &mdash; conditions such as arthritis and some cancers run in families.</li>
+  <li><b>Socioeconomic history</b> &mdash; work demands, home circumstances, stress and support.</li>
+</ul>
+
+<h3>3.4 Symptom history</h3>
+<p>The symptoms are then defined precisely, because each answer narrows the list of possible structures:</p>
+<ul>
+  <li><b>Side and site</b> &mdash; ask the patient to point. A specific point suggests a local lesion; a vague area suggests referral.</li>
+  <li><b>Onset</b> &mdash; sudden (often trauma) or gradual (often overuse). Ask about the <span class="g" data-t="mechanism of injury" tabindex="0">mechanism of injury</span> &mdash; the direction and magnitude of the force &mdash; because it predicts which structures were hurt.</li>
+  <li><b>Duration and pattern</b> &mdash; how long, and whether constant, periodic or episodic. Constant pain suggests chemical irritation or serious pathology; episodic pain suggests a mechanical cause.</li>
+  <li><b>Type and quality</b> &mdash; sharp, shooting nerve pain; dull, aching muscle pain; deep, boring bone pain; burning, pressure-like sympathetic pain.</li>
+  <li><b>Severity and irritability</b> &mdash; how intense the pain is, and how easily it flares with movement or posture.</li>
+  <li><b>Aggravating and relieving factors</b> &mdash; which movements, positions, times of day and activities worsen or ease it.</li>
+  <li><b>Associated features</b> &mdash; locking, giving way, instability, swelling, and any numbness, tingling or weakness.</li>
+</ul>
+<div class="key"><b>Yellow flags:</b> psychosocial factors &mdash; fear, anxiety, depression, job stress, or expectations of poor recovery &mdash; alter both the assessment and the treatment, and predict a poorer outcome. Screening tools such as the <span class="g" data-t="FABQ" tabindex="0">Fear-Avoidance Beliefs Questionnaire (FABQ)</span> help to reveal them.</div>
+
+<h3>3.5 Pain evaluation</h3>
+<p>Pain is subjective and must be measured as objectively as possible, so that it can be compared over time:</p>
+<ul>
+  <li>A <span class="g" data-t="VAS" tabindex="0">visual analogue scale (VAS)</span> &mdash; the patient marks a point on a 10&nbsp;cm line from "no pain" to "worst pain".</li>
+  <li>A numerical rating scale (0&ndash;10) or a verbal rating scale.</li>
+  <li>The <span class="g" data-t="McGill Pain Questionnaire" tabindex="0">McGill Pain Questionnaire</span>, which uses sensory, affective and evaluative word descriptors.</li>
+  <li>The <span class="g" data-t="LANSS" tabindex="0">LANSS scale</span> to judge whether neuropathic mechanisms dominate the pain.</li>
+  <li>A body chart on which the patient marks the location and spread of symptoms.</li>
+</ul>
+
+<h3>3.6 Vital signs</h3>
+<p>Vital signs establish the baseline physiological state and screen for conditions that affect treatment: temperature, heart rate, blood pressure and respiratory rate. Persistent abnormal readings warrant further investigation before exercise is prescribed.</p>
+
+<h2>4. Objective examination</h2>
+<p>The <span class="g" data-t="objective examination" tabindex="0">objective examination</span> is what the examiner finds rather than what the patient reports. It begins before the patient undresses.</p>
+
+<h3>4.1 Observation</h3>
+<p><span class="g" data-t="observation" tabindex="0">Observation</span> is the "looking" phase, and it starts in the waiting room &mdash; how the patient sits, moves and guards the part before they know they are being watched. The patient is then adequately undressed, in private, and the examiner compares both sides:</p>
+<ul>
+  <li><b>General build, wasting and oedema</b> &mdash; muscle bulk, swelling, and any bandages or scars.</li>
+  <li><b>Attitude of the limbs, bony contours and deformity</b> &mdash; is there malalignment such as genu varum, a scoliosis, or a fixed flexion deformity?</li>
+  <li><b>Posture and alignment</b> &mdash; anteriorly the nose, sternum and umbilicus should be in line; from the side the ear, acromion, iliac crest and lateral malleolus should align.</li>
+  <li><b>Skin</b> &mdash; colour, temperature, trophic change, bruising and scars.</li>
+  <li><b>Gait</b> &mdash; a first, cursory look that may already reveal a limp, a Trendelenburg sign or a drop foot.</li>
+  <li><b>Overt pain behaviour</b> &mdash; guarding, bracing, rubbing, grimacing and sighing.</li>
+</ul>
+
+<h3>4.2 Palpation</h3>
+<p><span class="g" data-t="palpation" tabindex="0">Palpation</span> confirms what observation suggested, using the hands to feel:</p>
+<ul>
+  <li><b>Tenderness</b> &mdash; the exact site and severity.</li>
+  <li><b>Skin and tissue</b> &mdash; temperature, texture, turgor, moisture and oedema.</li>
+  <li><b>Muscle</b> &mdash; tone, spasm, trigger points and any gap or defect.</li>
+  <li><b>Swelling</b> &mdash; and whether it is boggy, firm or <span class="g" data-t="pitting oedema" tabindex="0">pitting</span>.</li>
+  <li><b>Bony landmarks and joint lines</b> &mdash; for step deformities and tenderness.</li>
+  <li><b><span class="g" data-t="crepitus" tabindex="0">Crepitus</span> and abnormal sounds</b> &mdash; which matter only when they reproduce the patient's symptoms.</li>
+</ul>
+
+<h3>4.3 Motor assessment</h3>
+<h4>Range of motion (ROM)</h4>
+<p>Movement is tested in a fixed order. <span class="g" data-t="AROM" tabindex="0">Active range of motion (AROM)</span> is performed by the patient and tests joint range, muscle power, control and willingness to move together; the end of active movement is the <i>physiological barrier</i>. <span class="g" data-t="PROM" tabindex="0">Passive range of motion (PROM)</span> is performed by the examiner with the patient relaxed, and reveals the true available range and, critically, the <span class="g" data-t="end feel" tabindex="0">end feel</span> &mdash; the quality of resistance felt at the end of the range. Range is measured with a <span class="g" data-t="goniometry" tabindex="0">goniometer</span> or inclinometer, and each movement is compared with the opposite side. A limitation that follows a fixed order across several directions is a <span class="g" data-t="capsular pattern" tabindex="0">capsular pattern</span>.</p>
+<div class="tbl-wrap"><table>
+  <tr><th>End feel</th><th>Normal / abnormal</th><th>Example</th></tr>
+  <tr><td>Bone to bone</td><td>Normal (hard, painless)</td><td>Elbow extension</td></tr>
+  <tr><td>Soft-tissue approximation</td><td>Normal (mushy)</td><td>Knee flexion</td></tr>
+  <tr><td>Tissue stretch</td><td>Normal (springy)</td><td>Shoulder lateral rotation</td></tr>
+  <tr><td>Hard capsular</td><td>Abnormal</td><td>Frozen shoulder</td></tr>
+  <tr><td>Soft capsular / boggy</td><td>Abnormal</td><td>Synovitis, oedema</td></tr>
+  <tr><td>Muscle spasm</td><td>Abnormal</td><td>Protective spasm after injury</td></tr>
+  <tr><td>Springy block</td><td>Abnormal</td><td>Meniscus tear</td></tr>
+  <tr><td>Empty</td><td>Abnormal</td><td>Acute subacromial bursitis</td></tr>
+</table></div>
+
+<h4>Manual muscle testing (MMT)</h4>
+<p><span class="g" data-t="MMT" tabindex="0">Manual muscle testing</span> grades the strength of each muscle group against gravity and resistance, recorded on the standard 0&ndash;5 scale.</p>
+<div class="tbl-wrap"><table>
+  <tr><th>Grade</th><th>Value</th><th>Movement</th></tr>
+  <tr><td>5</td><td>Normal</td><td>Full ROM against gravity with maximal resistance</td></tr>
+  <tr><td>4</td><td>Good</td><td>Full ROM against gravity with moderate resistance</td></tr>
+  <tr><td>3</td><td>Fair</td><td>Full ROM against gravity alone</td></tr>
+  <tr><td>2</td><td>Poor</td><td>Full ROM with gravity eliminated</td></tr>
+  <tr><td>1</td><td>Trace</td><td>Contraction felt, but no joint movement</td></tr>
+  <tr><td>0</td><td>Zero</td><td>No contraction</td></tr>
+</table></div>
+
+<h4>Resisted isometric movements (RI)</h4>
+<p><span class="g" data-t="resisted isometric" tabindex="0">Resisted isometric</span> testing is done last, with the joint held in its resting position so that the inert tissues are under minimal tension. The patient contracts against resistance while movement is prevented ("don't let me move you"). Its purpose is to tell whether the <b>contractile tissue</b> &mdash; muscle, tendon and its bony attachment &mdash; is at fault. Four patterns emerge: strong and pain-free (normal), strong but painful (local muscle or tendon lesion), weak and painful (severe lesion such as fracture), and weak but pain-free (rupture or nerve involvement).</p>
+
+<h4>Reflexes</h4>
+<p>Superficial reflexes (abdominal, plantar) and deep tendon reflexes (biceps, brachioradialis, triceps, knee, ankle) are tested and compared side to side. A <span class="g" data-t="reflex" tabindex="0">reflex</span> that is diminished or absent points to a lower motor neuron or nerve-root lesion; an exaggerated reflex points to an upper motor neuron lesion.</p>
+
+<h4>Muscle girth and limb length</h4>
+<p><span class="g" data-t="muscle girth" tabindex="0">Muscle girth</span> is measured at a fixed bony landmark and compared with the other side to quantify wasting. <span class="g" data-t="limb length discrepancy" tabindex="0">Limb length</span> is measured to detect a true (bony) or apparent (postural) discrepancy that may be driving the problem elsewhere.</p>
+
+<h3>4.4 Sensory assessment</h3>
+<p>Sensation is mapped by testing <span class="g" data-t="dermatome" tabindex="0">dermatomes</span> (the skin area supplied by one nerve root) with light touch, pin-prick and temperature, and <span class="g" data-t="myotome" tabindex="0">myotomes</span> (the muscles supplied by one nerve root) by resisted contraction held for at least five seconds. Loss that follows a dermatome or myotome points to a nerve-root lesion; loss that follows a peripheral nerve's territory points to a nerve-trunk lesion.</p>
+
+<h3>4.5 Functional assessment</h3>
+<p>Function is what matters most to the patient. The <span class="g" data-t="FIM" tabindex="0">Functional Independence Measure (FIM)</span> and similar tools score self-care, sphincter control, mobility, locomotion, communication and social adjustment, and measure the impact of the condition on <span class="g" data-t="ADL" tabindex="0">activities of daily living (ADLs)</span> such as feeding, dressing, hygiene, transfers and walking. It tells the examiner what the patient can and cannot do, and what they most want to regain.</p>
+
+<h3>4.6 Gait analysis</h3>
+<p>Walking is broken into the <span class="g" data-t="gait cycle" tabindex="0">gait cycle</span> &mdash; the <span class="g" data-t="stance phase" tabindex="0">stance phase</span>, when the foot is on the ground, and the <span class="g" data-t="swing phase" tabindex="0">swing phase</span>, when it is in the air. The examiner records step and stride length, base width, <span class="g" data-t="cadence" tabindex="0">cadence</span>, and any deviation, because the way a person walks often reveals the site and severity of the problem.</p>
+
+<h3>4.7 Balance</h3>
+<p>Static balance is tested sitting, standing and in tandem stance, with eyes open and closed; dynamic balance is tested with reaching activities and perturbations. Poor balance signals impaired <span class="g" data-t="proprioception" tabindex="0">proprioception</span> or weakness, and a risk of falls.</p>
+
+<h3>4.8 Hand function</h3>
+<p>For the upper limb, the examiner observes <b>reaching, grasping and releasing</b>, and notes any assistive devices the patient uses, since the hand is the organ of daily function.</p>
+
+<h3>4.9 Coordination</h3>
+<p>Coordination is tested by smooth, rapid, alternating movements and by finger-to-nose testing; clumsiness or an inability to perform rapid alternating movements (<span class="g" data-t="dysdiadochokinesia" tabindex="0">dysdiadochokinesia</span>) points to a cerebellar or neurological problem.</p>
+
+<h3>4.10 Special tests</h3>
+<p>A <span class="g" data-t="special test" tabindex="0">special test</span> is a specific manoeuvre for one joint that stresses one structure to confirm or exclude a particular condition &mdash; for example an apprehension test for shoulder instability or a McMurray test for a meniscal tear. Each is recorded as positive or negative, and is meaningful only in the context of the whole assessment.</p>
+
+<h3>4.11 Investigations</h3>
+<p>Imaging and laboratory findings are interpreted alongside the clinical picture, never instead of it: plain <span class="g" data-t="radiograph" tabindex="0">radiographs</span> for bone and alignment, <span class="g" data-t="MRI" tabindex="0">MRI</span> for soft tissue, <span class="g" data-t="CT" tabindex="0">CT</span> for complex bone detail, and <span class="g" data-t="EMG" tabindex="0">electromyography (EMG)</span> and nerve conduction studies for nerve lesions.</p>
+
+<h2>5. From findings to diagnosis</h2>
+<p>The assessment ends by pulling the findings together:</p>
+<ul>
+  <li><b>Problem list</b> &mdash; each <b>impairment</b> (e.g. loss of external rotation), the <b>functional limitation</b> it causes (e.g. cannot reach overhead), and the resulting <b>disability</b> (e.g. cannot work).</li>
+  <li><b>Functional diagnosis</b> &mdash; not just the name of the condition, but which tissue is at fault, its stage and its irritability.</li>
+  <li><b>Goals</b> &mdash; short-term and long-term, agreed with the patient.</li>
+  <li><b>Treatment plan</b> and a <b>home programme</b>, with a date and the therapist's signature.</li>
+</ul>
+<div class="key">A diagnosis is not made on the strength of the first positive finding. It is made only when the picture is complete and there are <mark>no contradictory signs</mark> &mdash; which is why the examination must be systematic and extensive enough for a pattern to emerge.</div>
+
+<h2>6. Conclusion</h2>
+<p>The basic assessment of a musculoskeletal condition is a disciplined sequence, not a collection of tests. It begins with a careful history that often points to the diagnosis, moves through observation and a systematic examination of movement, strength, sensation and function, uses special tests and investigations to confirm or exclude specific conditions, and ends by converting the findings into a problem list and a functional diagnosis. Because the tissues differ in how they behave &mdash; contractile tissue hurts on contraction, inert tissue on stretch, nervous tissue along its path &mdash; the examiner who follows the same thorough routine every time is the one who finds the structure at fault, spots the red flags, and treats the patient safely and effectively.</p>
+
+<p class="src">Sources: ORTHOPEDIC PHYSIOTHERAPY EVALUATION FORM (structure and headings); Magee DJ, <i>Orthopedic Physical Assessment</i>, Chapter 1 "Principles and Concepts" (history, observation, examination principles, end feel, muscle grading, tissue differentiation); standard physiotherapy texts on goniometry, MMT and functional outcome measures.</p>
+
+<div class="next">
+  <a href="index.html">&larr; Back to library</a>
+  <a href="Frozen-Shoulder-Mobility-Essay.html">Frozen Shoulder &middot; Long essay &rarr;</a>
+</div>
+
+</div>
+
+<div id="pop" role="dialog" aria-live="polite"><span class="pt"></span><span class="pd"></span><span class="arrow"></span></div>
+
+<script>
+const GLOSSARY = {
+  "musculoskeletal system":"The body's framework for movement \u2014 bones, joints, muscles, tendons, ligaments, fascia, cartilage and the nerves that drive and sense them.",
+  "proprioception":"The body's sense of where its parts are in space, from receptors in muscle, tendon and joint. It underlies balance and coordinated movement.",
+  "functional diagnosis":"A diagnosis that states which tissue is at fault, its stage and its irritability, and what the patient cannot do \u2014 rather than just naming the condition.",
+  "red flags":"Signs that suggest serious pathology (such as fracture, tumour or infection) and require medical referral before physiotherapy. Examples: severe unrelenting pain, severe night pain, unexplained weight loss, bladder disturbance.",
+  "yellow flags":"Psychosocial factors \u2014 fear, anxiety, depression, job stress, or expectations of poor recovery \u2014 that can worsen pain and disability and change treatment.",
+  "subjective examination":"The history-taking half of the assessment: the patient's own account of their problem.",
+  "objective examination":"The half of the assessment based on what the examiner observes, feels and measures rather than what the patient reports.",
+  "chief complaint":"The patient's main problem, described in their own words, and how long it has been present.",
+  "mechanism of injury":"How the injury happened \u2014 the direction and magnitude of the force \u2014 which helps predict which structures were damaged.",
+  "vas":"Visual analogue scale. The patient marks a point on a 10 cm line from 'no pain' to 'worst pain' to give a repeatable pain score.",
+  "mcgill pain questionnaire":"A pain questionnaire using sensory, affective and evaluative word descriptors to characterise the pain experience.",
+  "lanss":"Leeds Assessment of Neuropathic Symptoms and Signs. A questionnaire and brief sensory test that estimates whether neuropathic mechanisms dominate the pain.",
+  "fabq":"Fear-Avoidance Beliefs Questionnaire. Measures how much a patient believes physical activity and work will harm their back, a key 'yellow flag'.",
+  "observation":"The 'looking' or inspection phase of the examination \u2014 assessing posture, alignment, deformity, skin, gait and pain behaviour by eye, comparing both sides.",
+  "palpation":"Examining by touch \u2014 feeling for tenderness, temperature, tissue texture, muscle spasm, swelling and bony landmarks.",
+  "crepitus":"A crackling or grinding sensation or sound felt or heard on joint movement. Only significant when it reproduces the patient's symptoms.",
+  "pitting oedema":"Swelling in which firm finger pressure leaves a temporary dent in the skin, indicating fluid in the tissues.",
+  "goniometry":"Measuring the range of motion of a joint in degrees, using a goniometer (a protractor-like tool).",
+  "arom":"Active range of motion \u2014 movement performed by the patient's own muscles. Tests range, power, control and willingness to move together.",
+  "prom":"Passive range of motion \u2014 movement performed by the examiner with the patient relaxed. Reveals the true available range and the end feel.",
+  "end feel":"The quality of resistance the examiner feels at the end of a passive movement, which helps identify the tissue at fault and the stage of the problem.",
+  "capsular pattern":"The characteristic order in which a joint loses movement when its capsule is the problem. For the shoulder: external rotation most, then abduction, then internal rotation.",
+  "mmt":"Manual muscle testing \u2014 grading a muscle's strength on the 0\u20135 scale against gravity and manual resistance.",
+  "resisted isometric":"A strong static contraction against resistance with no joint movement, used to test whether muscle or tendon (contractile tissue) is at fault.",
+  "reflex":"An automatic muscle response to a stimulus. Deep tendon reflexes are tested with a tendon hammer; a reduced reflex suggests a nerve-root or peripheral nerve lesion, an exaggerated one an upper motor neuron lesion.",
+  "muscle girth":"The circumference of a limb measured at a fixed bony landmark, compared side to side to quantify muscle wasting.",
+  "limb length discrepancy":"A difference in length between the two limbs \u2014 either true (from bone) or apparent (from posture) \u2014 that can drive problems elsewhere.",
+  "dermatome":"The area of skin supplied by a single spinal nerve root. Mapping it helps locate a nerve-root lesion.",
+  "myotome":"The group of muscles supplied by a single spinal nerve root. Tested by resisted contraction held for at least five seconds.",
+  "fim":"Functional Independence Measure \u2014 a standard scale scoring self-care, sphincter control, mobility, locomotion, communication and social adjustment.",
+  "adl":"Activities of daily living \u2014 the everyday tasks such as feeding, dressing, hygiene, transfers and walking that a condition may limit.",
+  "gait cycle":"One complete sequence of walking \u2014 from one foot-strike to the next foot-strike of the same foot \u2014 divided into a stance phase and a swing phase.",
+  "stance phase":"The part of the gait cycle when the foot is in contact with the ground.",
+  "swing phase":"The part of the gait cycle when the foot is off the ground and moving forward.",
+  "cadence":"The number of steps taken per unit of time, usually per minute.",
+  "dysdiadochokinesia":"Inability to perform smooth, rapid, alternating movements, pointing to a cerebellar or neurological problem.",
+  "special test":"A specific manoeuvre that stresses one structure at a joint to confirm or exclude a particular condition, such as an apprehension test for shoulder instability.",
+  "radiograph":"A plain X-ray, best for showing bone, alignment, fractures and joint space.",
+  "mri":"Magnetic resonance imaging \u2014 uses magnetic fields to show soft tissue such as ligaments, tendons, cartilage and discs.",
+  "ct":"Computed tomography \u2014 multiple X-ray images combined to give detailed cross-sectional bone images.",
+  "emg":"Electromyography \u2014 recording the electrical activity of muscle to assess nerve and muscle function and locate a nerve lesion."
+};
+
+const pop = document.getElementById('pop');
+const pt = pop.querySelector('.pt');
+const pd = pop.querySelector('.pd');
+const arrow = pop.querySelector('.arrow');
+let current = null;
+
+function show(el){
+  const key = el.getAttribute('data-t');
+  const def = GLOSSARY[key.toLowerCase()];
+  if(!def) return;
+  pt.textContent = key;
+  pd.textContent = def;
+  current = el;
+  pop.classList.add('show');
+  position(el);
+}
+function position(el){
+  const r = el.getBoundingClientRect();
+  const sx = window.scrollX, sy = window.scrollY;
+  pop.style.left = '0px'; pop.style.top = '0px';
+  const pw = pop.offsetWidth, ph = pop.offsetHeight;
+  let left = r.left + sx + r.width/2 - pw/2;
+  left = Math.max(12 + sx, Math.min(left, sx + document.documentElement.clientWidth - pw - 12));
+  let top = r.bottom + sy + 12;
+  let above = false;
+  if(r.bottom + ph + 24 > window.innerHeight){ top = r.top + sy - ph - 12; above = true; }
+  pop.style.left = left + 'px';
+  pop.style.top = top + 'px';
+  arrow.style.left = Math.max(14, Math.min(r.left + sx + r.width/2 - left - 6, pw - 26)) + 'px';
+  arrow.style.top = above ? (ph - 6) + 'px' : '-6px';
+}
+function hide(){ pop.classList.remove('show'); current = null; }
+
+document.querySelectorAll('.g').forEach(el=>{
+  el.addEventListener('click', e=>{ e.preventDefault(); if(current===el){hide();} else {show(el);} });
+  el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(el);} });
+});
+document.addEventListener('click', e=>{ if(!e.target.closest('.g') && !e.target.closest('#pop')) hide(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') hide(); });
+window.addEventListener('scroll', ()=>{ if(current) position(current); }, {passive:true});
+window.addEventListener('resize', ()=>{ if(current) position(current); });
+
+const prog = document.getElementById('prog');
+function onScroll(){
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+</script>
+</body>
+</html>

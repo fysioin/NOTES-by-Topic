@@ -85,11 +85,21 @@
   html[data-theme="dark"] #pop .arrow{background:#f3ece0}
   html[data-theme="dark"] th{background:#2b3a4a;color:#eef1f6}
   @media (prefers-color-scheme:dark){ html:not([data-theme="light"]) th{background:#2b3a4a;color:#eef1f6} }
-  /* ===== zoom to fit the screen ===== */
-  .wrap{zoom:var(--zoom,1);max-width:calc(760px / var(--zoom,1))}
+  /* ===== fit to page ===== */
+  body.fit .wrap{max-width:min(96vw,1200px)}
   /* ===== reading mode ===== */
   body.reading .topbar{display:none}
-  body.reading .wrap{max-width:calc(1000px / var(--zoom,1))}
+  body.reading .wrap{max-width:1000px}
+  /* ===== references ===== */
+  .refbox{margin-top:34px;background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:20px 22px}
+  .refbox .rb-t{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .refbox .rb-p{font-family:var(--sans);font-size:13.5px;color:var(--dim);margin:6px 0 14px;line-height:1.55}
+  .refbox .rb-actions{display:flex;flex-wrap:wrap;gap:10px}
+  .refbox a{font-family:var(--sans);font-size:13px;font-weight:600;text-decoration:none;border-radius:9px;padding:10px 16px;border:1px solid var(--rule)}
+  .refbox a.rb-open{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .refbox a.rb-open:hover{opacity:.92}
+  .refbox a.rb-dl{color:var(--navy)}
+  .refbox a.rb-dl:hover{border-color:var(--accent);color:var(--accent)}
   /* ===== reading controls (toolbar) ===== */
   :root{--ui-bg:#ffffff;--ui-ink:#1f2a37;--ui-line:rgba(20,30,50,.16);--ui-hover:rgba(20,30,50,.07);--ui-on:#e9f0f8}
   @media (prefers-color-scheme:dark){:root{--ui-bg:#22242c;--ui-ink:#ece6da;--ui-line:rgba(255,255,255,.18);--ui-hover:rgba(255,255,255,.09);--ui-on:#2c3a4a}}
@@ -317,6 +327,14 @@
 
 <p class="src">Sources: ORTHOPEDIC PHYSIOTHERAPY EVALUATION FORM (structure and headings); Magee DJ, <i>Orthopedic Physical Assessment</i>, Chapter 1 "Principles and Concepts" (history, observation, examination principles, end feel, muscle grading, tissue differentiation); standard physiotherapy texts on goniometry, MMT and functional outcome measures.</p>
 
+<div class="refbox">
+  <div class="rb-t">References</div>
+  <p class="rb-p">The reference list for this essay, as a one-page PDF &mdash; open it in your browser or download it.</p>
+  <div class="rb-actions">
+    <a class="rb-open" href="Basic-Assessment-Methods-References.pdf" target="_blank" rel="noopener">Open references (PDF)</a>
+    <a class="rb-dl" href="Basic-Assessment-Methods-References.pdf" download>Download PDF</a>
+  </div>
+</div>
 <div class="next">
   <a href="index.html">&larr; Back to library</a>
   <a href="Frozen-Shoulder-Mobility-Essay.html">Frozen Shoulder &middot; Long essay &rarr;</a>
@@ -426,16 +444,14 @@ onScroll();
   <span class="sep"></span>
   <button class="rbtn" id="tDark" type="button" title="Toggle dark mode" aria-pressed="false"><span class="ic" id="tDarkIcon">&#9789;</span><span class="lbl">Dark</span></button>
   <span class="sep"></span>
-  <button class="rbtn" id="zOut" type="button" title="Zoom out" aria-label="Zoom out">A&minus;</button>
-  <button class="rbtn zval" id="zFit" type="button" title="Fit to screen (reset zoom)">100%</button>
-  <button class="rbtn" id="zIn" type="button" title="Zoom in" aria-label="Zoom in">A+</button>
+  <button class="rbtn" id="tFit" type="button" title="Fit to page" aria-pressed="false"><span class="ic">&#10530;</span><span class="lbl">Fit</span></button>
   <span class="sep"></span>
   <button class="rbtn" id="tRead" type="button" title="Reading mode" aria-pressed="false"><span class="ic">&#9636;</span><span class="lbl">Reading</span></button>
 </div>
 <script>
 (function(){
   var root=document.documentElement, body=document.body;
-  var KEY_T='msk-theme', KEY_Z='msk-zoom', KEY_R='msk-reading';
+  var KEY_T='msk-theme', KEY_F='msk-fit', KEY_R='msk-reading';
   var savedT=localStorage.getItem(KEY_T);
   if(savedT==='dark'||savedT==='light'){root.setAttribute('data-theme',savedT);}
   function isDark(){
@@ -458,20 +474,11 @@ onScroll();
     var next=isDark()?'light':'dark';
     root.setAttribute('data-theme',next); localStorage.setItem(KEY_T,next); paintTheme();
   });
-  var STEPS=[0.85,1,1.15,1.3,1.5,1.75,2];
-  var z=parseFloat(localStorage.getItem(KEY_Z)); if(isNaN(z)) z=1;
-  var zval=document.getElementById('zFit');
-  function applyZoom(){ root.style.setProperty('--zoom',z); if(zval) zval.textContent=Math.round(z*100)+'%'; }
-  applyZoom();
-  function step(dir){
-    var i=STEPS.indexOf(z); if(i<0){ i=STEPS.indexOf(1); }
-    i=Math.max(0,Math.min(STEPS.length-1,i+dir)); z=STEPS[i];
-    localStorage.setItem(KEY_Z,z); applyZoom();
-  }
-  var zi=document.getElementById('zIn'), zo=document.getElementById('zOut');
-  if(zi) zi.addEventListener('click',function(){step(1);});
-  if(zo) zo.addEventListener('click',function(){step(-1);});
-  if(zval) zval.addEventListener('click',function(){z=1;localStorage.setItem(KEY_Z,1);applyZoom();});
+  var tFit=document.getElementById('tFit');
+  var f=localStorage.getItem(KEY_F)==='1';
+  function applyFit(){ body.classList.toggle('fit',f); if(tFit){tFit.classList.toggle('on',f);tFit.setAttribute('aria-pressed',f?'true':'false');} }
+  applyFit();
+  if(tFit) tFit.addEventListener('click',function(){ f=!f; localStorage.setItem(KEY_F,f?'1':'0'); applyFit(); });
   var tRead=document.getElementById('tRead');
   var r=localStorage.getItem(KEY_R)==='1';
   function applyRead(){ body.classList.toggle('reading',r); if(tRead){tRead.classList.toggle('on',r);tRead.setAttribute('aria-pressed',r?'true':'false');} }

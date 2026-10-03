@@ -31,22 +31,29 @@
   .lead{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--dim);max-width:560px;margin:0}
   /* ---- paper headings ---- */
   .papers{list-style:none;margin:40px 0 0;padding:0;border-top:1px solid var(--rule)}
-  .papers li{border-bottom:1px solid var(--rule)}
-  .papers a{display:flex;align-items:baseline;gap:20px;padding:28px 4px;text-decoration:none;color:var(--navy);transition:padding-left .16s ease,color .16s ease}
-  .papers a:hover{padding-left:16px;color:var(--accent)}
+  .papers li{border-bottom:1px solid var(--rule);padding-bottom:14px}
+  .papers .prow{display:flex;align-items:baseline;gap:20px;padding:26px 4px 8px;text-decoration:none;color:var(--navy);transition:padding-left .16s ease,color .16s ease}
+  .papers .prow:hover{padding-left:16px;color:var(--accent)}
   .papers .pn{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);min-width:66px;flex-shrink:0}
   .papers .pt{font-family:var(--serif);font-size:clamp(20px,2.7vw,28px);font-weight:600;line-height:1.22;flex:1}
   .papers .pa{font-size:20px;color:var(--dim);flex-shrink:0;transition:transform .16s ease,color .16s ease}
-  .papers a:hover .pa{transform:translateX(4px);color:var(--accent)}
+  .papers .prow:hover .pa{transform:translateX(4px);color:var(--accent)}
+  /* ---- essays under a paper ---- */
+  .pessays{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;padding:0 4px 4px 86px}
+  .pessays .pel{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+  .pessays a{font-family:var(--serif);font-size:15px;color:var(--navy);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+  .pessays a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .pessays a::before{content:"\2014\00a0";color:var(--dim)}
   /* ---- footer ---- */
   .foot{margin-top:56px;font-size:12.5px;color:var(--dim);line-height:1.7}
-  @media (max-width:560px){
-    .wrap{padding:40px 18px 70px}
-    .papers a{gap:12px;padding:22px 2px}
-    .papers .pn{min-width:54px}
-  }
   .foot b{color:var(--navy);font-weight:600}
   body.fit .wrap{max-width:min(96vw,1280px)}
+  @media (max-width:560px){
+    .wrap{padding:40px 18px 70px}
+    .papers .prow{gap:12px;padding:22px 2px 6px}
+    .papers .pn{min-width:54px}
+    .pessays{padding-left:66px;gap:4px 14px}
+  }
   @media print{.rtools,.bar{display:none}body{background:#fff}}
 </style>
 <style>
@@ -95,34 +102,49 @@
   <div class="hero">
     <div class="kicker">RGUHS &middot; Master of Physiotherapy &middot; Musculoskeletal</div>
     <h1>Notes by Topic</h1>
-    <p class="lead">Four papers. Open one to read its topics and long essays.</p>
+    <p class="lead">Four papers. Open a paper to read its topics, or go straight to a long essay.</p>
   </div>
 
   <ul class="papers">
-    <li><a href="paper1.html">
-      <span class="pn">Paper 1</span>
-      <span class="pt">Fundamentals in Physiotherapy Practice, Pedagogy and Research</span>
-      <span class="pa" aria-hidden="true">&rarr;</span>
-    </a></li>
-    <li><a href="paper2.html">
-      <span class="pn">Paper 2</span>
-      <span class="pt">Fundamental Principles of Musculoskeletal Physiotherapy</span>
-      <span class="pa" aria-hidden="true">&rarr;</span>
-    </a></li>
-    <li><a href="paper3.html">
-      <span class="pn">Paper 3</span>
-      <span class="pt">Physical and Functional Diagnosis in Musculoskeletal Disorders</span>
-      <span class="pa" aria-hidden="true">&rarr;</span>
-    </a></li>
-    <li><a href="paper4.html">
-      <span class="pn">Paper 4</span>
-      <span class="pt">Physiotherapy Interventions in Musculoskeletal Disorders</span>
-      <span class="pa" aria-hidden="true">&rarr;</span>
-    </a></li>
+    <li>
+      <a class="prow" href="paper1.html">
+        <span class="pn">Paper 1</span>
+        <span class="pt">Fundamentals in Physiotherapy Practice, Pedagogy and Research</span>
+        <span class="pa" aria-hidden="true">&rarr;</span>
+      </a>
+    </li>
+    <li>
+      <a class="prow" href="paper2.html">
+        <span class="pn">Paper 2</span>
+        <span class="pt">Fundamental Principles of Musculoskeletal Physiotherapy</span>
+        <span class="pa" aria-hidden="true">&rarr;</span>
+      </a>
+    </li>
+    <li>
+      <a class="prow" href="paper3.html">
+        <span class="pn">Paper 3</span>
+        <span class="pt">Physical and Functional Diagnosis in Musculoskeletal Disorders</span>
+        <span class="pa" aria-hidden="true">&rarr;</span>
+      </a>
+      <div class="pessays"><span class="pel">Long essays</span>
+        <a href="Basic-Assessment-Methods-Musculoskeletal.html">Basic assessment methods for MSK diagnosis</a>
+        <a href="Lumbar-Disc-Herniation-Screening-Essay.html">Concluding lumbar disc herniation on screening</a>
+      </div>
+    </li>
+    <li>
+      <a class="prow" href="paper4.html">
+        <span class="pn">Paper 4</span>
+        <span class="pt">Physiotherapy Interventions in Musculoskeletal Disorders</span>
+        <span class="pa" aria-hidden="true">&rarr;</span>
+      </a>
+      <div class="pessays"><span class="pel">Long essay</span>
+        <a href="Frozen-Shoulder-Mobility-Essay.html">Frozen shoulder &mdash; mobility interventions</a>
+      </div>
+    </li>
   </ul>
 
   <div class="foot">
-    <b>MSK Notes</b> &middot; 30 topics across 4 papers &middot; 3 long essays. Every page opens as a clean single-column read with dark mode, zoom and reading mode.
+    <b>MSK Notes</b> &middot; 30 topics across 4 papers &middot; 3 long essays. Every page opens as a clean single-column read with dark mode, fit-to-page and reading mode.
   </div>
 
 </div>

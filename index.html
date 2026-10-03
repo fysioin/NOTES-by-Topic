@@ -29,63 +29,77 @@
   .hero{padding-bottom:8px}
   .kicker{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
   h1{font-family:var(--serif);font-size:clamp(34px,5vw,50px);font-weight:600;line-height:1.08;letter-spacing:-.015em;color:var(--navy);margin:0 0 16px}
-  .lead{font-family:var(--serif);font-size:17.5px;line-height:1.7;color:var(--dim);max-width:640px;margin:0}
-  /* ---- section head ---- */
-  .shead{display:flex;align-items:baseline;gap:12px;margin:56px 0 22px;border-bottom:1px solid var(--rule);padding-bottom:10px}
-  .shead h2{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--navy);margin:0}
-  .shead .count{font-size:12px;color:var(--dim);letter-spacing:.04em}
-  .shead .soon-tag{margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-  /* ---- library grid ---- */
-  .shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px}
-  .book{display:block;text-decoration:none;color:var(--ink);transition:transform .16s ease}
-  .book:hover{transform:translateY(-4px)}
-  .cover{position:relative;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:var(--card);
-    box-shadow:0 1px 2px rgba(43,38,32,.14),0 8px 22px rgba(43,38,32,.10);border:1px solid rgba(43,38,32,.08);
-    display:flex;flex-direction:column;padding:20px 18px 18px}
-  .cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--spine)}
-  .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.16),transparent 55%);pointer-events:none}
-  .ctag{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--spine);margin-bottom:auto;opacity:.95}
-  .ctitle{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.24;color:var(--navy);margin:14px 0 0}
-  .crule{width:34px;height:2px;background:var(--spine);opacity:.55;margin:12px 0}
-  .csub{font-family:var(--serif);font-size:11.5px;color:var(--dim);line-height:1.4}
-  .book:hover .cover{box-shadow:0 2px 3px rgba(43,38,32,.16),0 16px 34px rgba(43,38,32,.18)}
-  .meta{padding:12px 2px 0}
-  .meta .desc{font-size:12.5px;color:var(--dim);line-height:1.5;margin:0 0 9px;min-height:38px}
-  .tags{display:flex;flex-wrap:wrap;gap:6px}
-  .tag{font-size:10px;font-weight:500;letter-spacing:.03em;color:var(--dim);background:var(--paper2);border:1px solid var(--rule);border-radius:20px;padding:3px 9px}
-  /* ---- coming soon ---- */
-  .book.soon{pointer-events:none;opacity:.92}
-  .book.soon .cover{filter:grayscale(.72);box-shadow:none;border-style:dashed}
-  .book.soon .cover::before{background:#b9b0a2}
-  .book.soon .ctag,.book.soon .ctitle,.book.soon .csub{color:#8c8478}
-  .book.soon .crule{background:#b9b0a2}
-  .soonchip{position:absolute;top:14px;right:14px;font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-    color:#6b6257;background:rgba(255,255,255,.82);border:1px solid rgba(43,38,32,.14);border-radius:20px;padding:4px 9px}
-  /* ---- glossary term ---- */
-  .g{border-bottom:1.5px dotted var(--accent);cursor:help}
-  .g:hover{background:rgba(168,98,30,.12)}
-  /* ---- popover ---- */
-  #pop{position:absolute;z-index:500;max-width:320px;width:max-content;background:#231f19;color:#f3ece0;border-radius:12px;
-    padding:13px 16px;box-shadow:0 16px 44px rgba(0,0,0,.34);font-size:13px;line-height:1.55;opacity:0;transform:translateY(6px) scale(.98);
-    pointer-events:none;transition:opacity .16s ease,transform .16s ease}
-  #pop.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
-  #pop .pt{display:block;font-family:var(--serif);font-weight:600;font-size:14.5px;color:#f0c98a;margin-bottom:4px;text-transform:capitalize}
+  .lead{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--dim);max-width:680px;margin:0}
+  /* ---- contents strip ---- */
+  .contents{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 6px}
+  .contents a{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--navy);background:var(--card);border:1px solid var(--rule);border-radius:20px;padding:8px 16px}
+  .contents a:hover{border-color:var(--accent);color:var(--accent)}
+  /* ---- paper section ---- */
+  .paper{margin-top:54px;border-top:1px solid var(--rule);padding-top:32px;scroll-margin-top:84px}
+  .phead{display:flex;flex-direction:column;gap:7px;margin-bottom:22px}
+  .pnum{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  .phead h2{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:600;line-height:1.16;margin:0;color:var(--navy)}
+  .phead h2 a{text-decoration:none;color:inherit}
+  .phead h2 a:hover{color:var(--accent)}
+  .pdesc{font-family:var(--serif);font-size:15px;color:var(--dim);line-height:1.6;max-width:740px;margin:0}
+  .block{margin-top:24px}
+  .coltitle{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:10px;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+  .coltitle .cnt{font-size:10px;color:var(--accent);background:var(--paper2);border:1px solid var(--rule);border-radius:20px;padding:2px 8px;letter-spacing:.04em}
+  /* ---- topic index ---- */
+  .idx{list-style:none;counter-reset:idx;margin:0;padding:0;display:grid;gap:2px}
+  .idx li{counter-increment:idx}
+  .idx a{display:flex;gap:12px;align-items:baseline;text-decoration:none;color:var(--ink);font-family:var(--serif);font-size:15.5px;line-height:1.5;padding:9px 12px;border-radius:8px}
+  .idx a::before{content:counter(idx);font-family:var(--sans);font-size:11px;font-weight:600;color:var(--accent);min-width:20px;text-align:right;flex-shrink:0}
+  .idx a:hover{background:var(--card);color:var(--navy)}
+  /* ---- long-essay index ---- */
+  .essay-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .essay-list a{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px;transition:transform .14s ease,box-shadow .14s ease}
+  .essay-list a:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(43,38,32,.12)}
+  .essay-list .et{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .essay-list .eh{display:block;font-family:var(--serif);font-size:17px;color:var(--navy);margin-top:4px;line-height:1.3}
+  .essay-list .ed{display:block;font-family:var(--serif);font-size:13px;color:var(--dim);margin-top:4px}
+  .none{font-family:var(--serif);font-size:14px;color:var(--dim);font-style:italic;margin:0;padding:12px 14px;background:var(--card);border:1px dashed var(--rule);border-radius:10px}
   /* ---- footer ---- */
   .foot{margin-top:64px;border-top:1px solid var(--rule);padding-top:22px;font-size:12.5px;color:var(--dim);line-height:1.7}
   .foot b{color:var(--navy);font-weight:600}
+  @media (max-width:560px){
+    .wrap{padding:36px 18px 70px}
+    .idx a{font-size:14.5px}
+  }
+  @media print{.rtools,.bar{display:none}body{background:#fff}}
+</style>
+<style>
+  /* ===== theme overrides (manual dark mode) ===== */
+  html[data-theme="light"]{--paper:#f7f2e7;--paper2:#efe8d8;--card:#fdfbf5;--ink:#2b2620;--dim:#7a7268;--rule:#e3dbca;--navy:#1e3a5f;--accent:#a8621e;--hl:#f6e7a8}
+  html[data-theme="dark"]{--paper:#191919;--paper2:#242424;--card:#232323;--ink:#e8e2d6;--dim:#a49b8b;--rule:#34302a;--navy:#a9c4e0;--accent:#e0a45c;--hl:#5a4d18}
+  html[data-theme="light"] .bar{background:rgba(247,242,231,.9)}
+  html[data-theme="dark"] .bar{background:rgba(25,25,25,.9)}
+  html[data-theme="dark"] body{background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px)}
   @media (prefers-color-scheme:dark){
     :root{--paper:#191919;--paper2:#242424;--card:#232323;--ink:#e8e2d6;--dim:#a49b8b;--rule:#34302a;--navy:#a9c4e0;--accent:#e0a45c;--hl:#5a4d18}
     body{background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px)}
     .bar{background:rgba(25,25,25,.9)}
-    .cover::after{background:linear-gradient(160deg,rgba(255,255,255,.06),transparent 55%)}
-    #pop{background:#f3ece0;color:#231f19}
-    #pop .pt{color:#8a5a10}
   }
+  /* ===== reading controls ===== */
+  :root{--ui-bg:#ffffff;--ui-ink:#1f2a37;--ui-line:rgba(20,30,50,.16);--ui-hover:rgba(20,30,50,.07);--ui-on:#e9f0f8}
+  @media (prefers-color-scheme:dark){:root{--ui-bg:#22242c;--ui-ink:#ece6da;--ui-line:rgba(255,255,255,.18);--ui-hover:rgba(255,255,255,.09);--ui-on:#2c3a4a}}
+  html[data-theme="dark"]{--ui-bg:#22242c;--ui-ink:#ece6da;--ui-line:rgba(255,255,255,.18);--ui-hover:rgba(255,255,255,.09);--ui-on:#2c3a4a}
+  html[data-theme="light"]{--ui-bg:#ffffff;--ui-ink:#1f2a37;--ui-line:rgba(20,30,50,.16);--ui-hover:rgba(20,30,50,.07);--ui-on:#e9f0f8}
+  .rtools{position:fixed;right:18px;bottom:18px;z-index:600;display:flex;align-items:center;gap:4px;
+    background:var(--ui-bg);border:1px solid var(--ui-line);border-radius:999px;padding:5px;box-shadow:0 10px 30px rgba(0,0,0,.22);
+    font-family:var(--sans,system-ui,sans-serif);max-width:calc(100vw - 24px)}
+  .rtools button,.rtools a.rbtn{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;cursor:pointer;
+    color:var(--ui-ink);font:inherit;font-size:12px;font-weight:600;letter-spacing:.02em;padding:8px 12px;border-radius:999px;line-height:1;text-decoration:none;white-space:nowrap}
+  .rtools button:hover,.rtools a.rbtn:hover{background:var(--ui-hover)}
+  .rtools .on{background:var(--ui-on);color:var(--ui-ink)}
+  .rtools .sep{width:1px;height:22px;background:var(--ui-line);margin:0 2px;flex-shrink:0}
+  .rtools .ic{font-size:14px;line-height:1}
+  .rtools .zval{min-width:46px;justify-content:center;font-variant-numeric:tabular-nums}
+  body.reading .wrap{max-width:1180px}
   @media (max-width:560px){
-    .wrap{padding:36px 18px 70px}
-    .shelf{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px}
-    .ctitle{font-size:16px}
-    .meta .desc{min-height:0}
+    .rtools{right:10px;bottom:10px;padding:4px;gap:2px}
+    .rtools button,.rtools a.rbtn{padding:8px 9px;font-size:11px}
+    .rtools .lbl{display:none}
   }
 </style>
 </head>
@@ -100,210 +114,192 @@
 
 <div class="hero">
   <div class="kicker">RGUHS &middot; Master of Physiotherapy &middot; Musculoskeletal</div>
-  <h1>Your Library</h1>
-  <p class="lead">Readable, exam-ready physiotherapy notes. Every page is a clean, single-column read with plain-language pop-ups for difficult terms and outcome measures &mdash; just tap the <span class="g" data-t="glossary terms">dotted words</span>.</p>
+  <h1>Notes by Topic</h1>
+  <p class="lead">Every topic, grouped under the four RGUHS MPT papers. Each paper lists its syllabus topics and its long-essay questions &mdash; open a topic to read the notes, or jump straight to an essay. Pages open as a clean single-column read, with dark mode, zoom and reading mode built in.</p>
+  <nav class="contents" aria-label="Papers">
+    <a href="#paper1">Paper 1</a>
+    <a href="#paper2">Paper 2</a>
+    <a href="#paper3">Paper 3</a>
+    <a href="#paper4">Paper 4</a>
+  </nav>
 </div>
 
-<div class="shead"><h2>Available now</h2><span class="count">6 topics</span></div>
-<div class="shelf">
-
-  <a class="book" href="Basic-Assessment-Methods-Musculoskeletal.html">
-    <div class="cover" style="--spine:#7d3a44">
-      <div class="ctag">Long Essay</div>
-      <div class="ctitle">Basic Assessment Methods for MSK Diagnosis</div>
-      <div class="crule"></div>
-      <div class="csub">The systematic history, observation and examination used to diagnose musculoskeletal conditions</div>
-    </div>
-    <div class="meta">
-      <p class="desc">From chief complaint to functional diagnosis &mdash; history, observation, movement, strength, sensation and special tests.</p>
-      <div class="tags"><span class="tag">Assessment</span><span class="tag">Diagnosis</span><span class="tag">Long essay</span></div>
-    </div>
-  </a>
-
-  <a class="book" href="Frozen-Shoulder-Mobility-Essay.html">
-    <div class="cover" style="--spine:#b06a3a">
-      <div class="ctag">Long Essay</div>
-      <div class="ctitle">Frozen Shoulder &mdash; Mobility Interventions</div>
-      <div class="crule"></div>
-      <div class="csub">A staged, symptom-limited programme to restore movement after <span class="g" data-t="adhesive capsulitis">adhesive capsulitis</span></div>
-    </div>
-    <div class="meta">
-      <p class="desc">Pain first, then range, then strength &mdash; matched to the freezing, frozen and thawing stages.</p>
-      <div class="tags"><span class="tag">Shoulder</span><span class="tag">Interventions</span><span class="tag">Long essay</span></div>
-    </div>
-  </a>
-
-  <a class="book" href="paper1.html">
-    <div class="cover" style="--spine:#3b5a7a">
-      <div class="ctag">Paper 1 &middot; Common</div>
-      <div class="ctitle">Fundamentals in Physiotherapy Practice, Pedagogy and Research</div>
-      <div class="crule"></div>
-      <div class="csub">Professional practice, ethics, research methods, <span class="g" data-t="exercise physiology">exercise physiology</span>, <span class="g" data-t="electrophysiology">electrophysiology</span> and management</div>
-    </div>
-    <div class="meta">
-      <p class="desc">The common paper for every MPT specialty.</p>
-      <div class="tags"><span class="tag">Common paper</span><span class="tag">Research</span></div>
-    </div>
-  </a>
-
-  <a class="book" href="paper2.html">
-    <div class="cover" style="--spine:#2f6d6a">
-      <div class="ctag">Paper 2 &middot; MSK</div>
-      <div class="ctitle">Fundamental Principles of Musculoskeletal Physiotherapy</div>
-      <div class="crule"></div>
-      <div class="csub">The science base &mdash; <span class="g" data-t="biomechanics">biomechanics</span>, joint mechanics, posture, <span class="g" data-t="gait">gait</span> and pain</div>
-    </div>
-    <div class="meta">
-      <p class="desc">Biomechanics, joint mechanics, posture, gait and pain.</p>
-      <div class="tags"><span class="tag">Biomechanics</span><span class="tag">Pain</span></div>
-    </div>
-  </a>
-
-  <a class="book" href="paper3.html">
-    <div class="cover" style="--spine:#6b4a6b">
-      <div class="ctag">Paper 3 &middot; MSK</div>
-      <div class="ctitle">Physical and Functional Diagnosis in Musculoskeletal Disorders</div>
-      <div class="crule"></div>
-      <div class="csub">Assessment, special tests, imaging and <span class="g" data-t="outcome measures">outcome measures</span></div>
-    </div>
-    <div class="meta">
-      <p class="desc">Screening, special tests, imaging and functional assessment.</p>
-      <div class="tags"><span class="tag">Assessment</span><span class="tag">Diagnosis</span></div>
-    </div>
-  </a>
-
-  <a class="book" href="paper4.html">
-    <div class="cover" style="--spine:#4a6b3a">
-      <div class="ctag">Paper 4 &middot; MSK</div>
-      <div class="ctitle">Physiotherapy Interventions in Musculoskeletal Disorders</div>
-      <div class="crule"></div>
-      <div class="csub">Exercise and impairment management, manual therapy, electro modalities and <span class="g" data-t="ergonomics">ergonomics</span></div>
-    </div>
-    <div class="meta">
-      <p class="desc">Treatment approaches, manual therapy and trauma rehabilitation.</p>
-      <div class="tags"><span class="tag">Interventions</span><span class="tag">Manual therapy</span></div>
-    </div>
-  </a>
-
-</div>
-
-<div class="shead"><h2>Coming soon</h2><span class="count">in preparation</span><span class="soon-tag">Will be added later</span></div>
-<div class="shelf">
-
-  <div class="book soon">
-    <div class="cover"><span class="soonchip">Coming soon</span>
-      <div class="ctag">Shoulder</div>
-      <div class="ctitle">Rotator Cuff Rehabilitation</div>
-      <div class="crule"></div>
-      <div class="csub">Progressive loading after cuff injury and repair</div>
-    </div>
-    <div class="meta"><p class="desc">Not written yet.</p><div class="tags"><span class="tag">Shoulder</span><span class="tag">Exercise</span></div></div>
+<!-- ================= PAPER 1 ================= -->
+<section class="paper" id="paper1">
+  <div class="phead">
+    <span class="pnum">Paper 1 &middot; Common to all specialties</span>
+    <h2><a href="paper1.html">Fundamentals in Physiotherapy Practice, Pedagogy and Research</a></h2>
+    <p class="pdesc">Professional practice, ethics, research methods, exercise physiology, electrophysiology, pedagogy and management &mdash; the common paper for every MPT specialty.</p>
   </div>
-
-  <div class="book soon">
-    <div class="cover"><span class="soonchip">Coming soon</span>
-      <div class="ctag">Knee</div>
-      <div class="ctitle">ACL Reconstruction Rehab</div>
-      <div class="crule"></div>
-      <div class="csub">Criteria-based return to sport after ACL surgery</div>
-    </div>
-    <div class="meta"><p class="desc">Not written yet.</p><div class="tags"><span class="tag">Knee</span><span class="tag">Post-op</span></div></div>
+  <div class="block">
+    <h3 class="coltitle">Topics <span class="cnt">7</span></h3>
+    <ol class="idx">
+      <li><a href="paper1.html#principles-of-physiotherapy-practice-314">Principles of Physiotherapy Practice</a></li>
+      <li><a href="paper1.html#core-professional-values-in-physiotherap-213">Core Professional Values in Physiotherapy including Professional and Research Ethics</a></li>
+      <li><a href="paper1.html#research-methodology-and-biostatistics-235">Research Methodology and Biostatistics</a></li>
+      <li><a href="paper1.html#exercise-physiology-325">Exercise Physiology</a></li>
+      <li><a href="paper1.html#electrophysiology-325">Electrophysiology</a></li>
+      <li><a href="paper1.html#pedagogy-in-physiotherapy-education-101">Pedagogy in Physiotherapy Education</a></li>
+      <li><a href="paper1.html#management-entrepreneurship-and-leadersh-112">Management, Entrepreneurship and Leadership in Physiotherapy Practice</a></li>
+    </ol>
   </div>
-
-  <div class="book soon">
-    <div class="cover"><span class="soonchip">Coming soon</span>
-      <div class="ctag">Hip</div>
-      <div class="ctitle">Total Hip Replacement</div>
-      <div class="crule"></div>
-      <div class="csub">Precautions and rehabilitation after THR</div>
-    </div>
-    <div class="meta"><p class="desc">Not written yet.</p><div class="tags"><span class="tag">Hip</span><span class="tag">Post-op</span></div></div>
+  <div class="block">
+    <h3 class="coltitle">Long essays <span class="cnt">0</span></h3>
+    <p class="none">No long essays for this paper yet.</p>
   </div>
+</section>
 
-  <div class="book soon">
-    <div class="cover"><span class="soonchip">Coming soon</span>
-      <div class="ctag">Spine</div>
-      <div class="ctitle">Mechanical Low Back Pain</div>
-      <div class="crule"></div>
-      <div class="csub">Classification, exercise and manual therapy</div>
-    </div>
-    <div class="meta"><p class="desc">Not written yet.</p><div class="tags"><span class="tag">Spine</span><span class="tag">Pain</span></div></div>
+<!-- ================= PAPER 2 ================= -->
+<section class="paper" id="paper2">
+  <div class="phead">
+    <span class="pnum">Paper 2 &middot; MSK</span>
+    <h2><a href="paper2.html">Fundamental Principles of Musculoskeletal Physiotherapy</a></h2>
+    <p class="pdesc">The science base &mdash; biomechanics, joint mechanics, anthropometry, posture, gait and pain.</p>
   </div>
-
-  <div class="book soon">
-    <div class="cover"><span class="soonchip">Coming soon</span>
-      <div class="ctag">Ankle</div>
-      <div class="ctitle">Lateral Ligament Sprain</div>
-      <div class="crule"></div>
-      <div class="csub">Functional rehabilitation and proprioception</div>
-    </div>
-    <div class="meta"><p class="desc">Not written yet.</p><div class="tags"><span class="tag">Ankle</span><span class="tag">Sports</span></div></div>
+  <div class="block">
+    <h3 class="coltitle">Topics <span class="cnt">10</span></h3>
+    <ol class="idx">
+      <li><a href="paper2.html#basic-concepts-of-musculoskeletal-system-213">Basic Concepts of Musculoskeletal System</a></li>
+      <li><a href="paper2.html#basic-concepts-of-anthropometry-112">Basic Concepts of Anthropometry</a></li>
+      <li><a href="paper2.html#basic-concepts-of-biomechanics-415">Basic Concepts of Biomechanics</a></li>
+      <li><a href="paper2.html#biomechanics-of-movement-across-the-life-202">Biomechanics of Movement across the Life Span</a></li>
+      <li><a href="paper2.html#physiological-basis-of-human-movement-213">Physiological Basis of Human Movement</a></li>
+      <li><a href="paper2.html#mechanics-and-pathomechanics-of-joints-325">Mechanics and Pathomechanics of Joints</a></li>
+      <li><a href="paper2.html#posture-213">Posture</a></li>
+      <li><a href="paper2.html#gait-and-function-314">Gait and Function</a></li>
+      <li><a href="paper2.html#pain-325">Pain</a></li>
+      <li><a href="paper2.html#electro-physics-325">Electro Physics</a></li>
+    </ol>
   </div>
-
-  <div class="book soon">
-    <div class="cover"><span class="soonchip">Coming soon</span>
-      <div class="ctag">Elbow</div>
-      <div class="ctitle">Lateral Epicondylitis</div>
-      <div class="crule"></div>
-      <div class="csub">Loading programmes for common extensor tendinopathy</div>
-    </div>
-    <div class="meta"><p class="desc">Not written yet.</p><div class="tags"><span class="tag">Elbow</span><span class="tag">Tendinopathy</span></div></div>
+  <div class="block">
+    <h3 class="coltitle">Long essays <span class="cnt">0</span></h3>
+    <p class="none">No long essays for this paper yet.</p>
   </div>
+</section>
 
-</div>
+<!-- ================= PAPER 3 ================= -->
+<section class="paper" id="paper3">
+  <div class="phead">
+    <span class="pnum">Paper 3 &middot; MSK</span>
+    <h2><a href="paper3.html">Physical and Functional Diagnosis in Musculoskeletal Disorders</a></h2>
+    <p class="pdesc">Assessment, screening, special tests, imaging and functional diagnosis.</p>
+  </div>
+  <div class="block">
+    <h3 class="coltitle">Topics <span class="cnt">6</span></h3>
+    <ol class="idx">
+      <li><a href="paper3.html#introduction-to-assessment-basic-assessm-314">Introduction to Assessment, Basic Assessment Methods, Physical Assessment as Screening</a></li>
+      <li><a href="paper3.html#screening-the-head-neck-and-back-shoulde-224">Screening the Head, Neck and Back; Shoulder and Upper Extremity; Sacrum, Sacroiliac and Pelvis; Lower Quadrant; Chest and Ribs</a></li>
+      <li><a href="paper3.html#direct-access-primary-care-autonomous-pr-112">Direct Access, Primary Care, Autonomous Practice, Decision-Making</a></li>
+      <li><a href="paper3.html#physiotherapy-diagnosis-special-tests-me-325">Physiotherapy Diagnosis, Special Tests, Medical Screening, Imaging, Electrodiagnosis, Exercise Testing</a></li>
+      <li><a href="paper3.html#assessment-of-fractures-orthotics-splint-224">Assessment of Fractures, Orthotics/Splints, Hand Injuries, Amputations, Degenerative Conditions, Paediatric Orthopaedics</a></li>
+      <li><a href="paper3.html#functional-assessment-outcome-measures-e-325">Functional Assessment, Outcome Measures, Ergonomic Risk Assessment, ICF</a></li>
+    </ol>
+  </div>
+  <div class="block">
+    <h3 class="coltitle">Long essays <span class="cnt">1</span></h3>
+    <ul class="essay-list">
+      <li><a href="Basic-Assessment-Methods-Musculoskeletal.html">
+        <span class="et">Long essay &middot; 10 marks</span>
+        <span class="eh">Explain in detail the basic assessment methods for the diagnosis of musculoskeletal conditions</span>
+        <span class="ed">From chief complaint to functional diagnosis &mdash; history, observation, movement, strength, sensation and special tests.</span>
+      </a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= PAPER 4 ================= -->
+<section class="paper" id="paper4">
+  <div class="phead">
+    <span class="pnum">Paper 4 &middot; MSK</span>
+    <h2><a href="paper4.html">Physiotherapy Interventions in Musculoskeletal Disorders</a></h2>
+    <p class="pdesc">Treatment &mdash; exercise and impairment management, pain management, manual therapy, electro modalities, ergonomics and trauma rehabilitation.</p>
+  </div>
+  <div class="block">
+    <h3 class="coltitle">Topics <span class="cnt">7</span></h3>
+    <ol class="idx">
+      <li><a href="paper4.html#interventions-for-physiologic-impairment-213">Interventions for Physiologic Impairments during Rehabilitation</a></li>
+      <li><a href="paper4.html#management-of-pain-314">Management of Pain</a></li>
+      <li><a href="paper4.html#methods-of-musculoskeletal-rehabilitatio-325">Methods of Musculoskeletal Rehabilitation</a></li>
+      <li><a href="paper4.html#advanced-techniques-in-musculoskeletal-r-224">Advanced Techniques in Musculoskeletal Rehabilitation</a></li>
+      <li><a href="paper4.html#electro-modalities-in-musculoskeletal-re-314">Electro Modalities in Musculoskeletal Rehabilitation</a></li>
+      <li><a href="paper4.html#ergonomics-213">Ergonomics</a></li>
+      <li><a href="paper4.html#trauma-rehabilitation-224">Trauma Rehabilitation</a></li>
+    </ol>
+  </div>
+  <div class="block">
+    <h3 class="coltitle">Long essays <span class="cnt">1</span></h3>
+    <ul class="essay-list">
+      <li><a href="Frozen-Shoulder-Mobility-Essay.html">
+        <span class="et">Long essay &middot; 10 marks</span>
+        <span class="eh">Discuss the interventions to improve the mobility of the shoulder joint following adhesive capsulitis</span>
+        <span class="ed">A staged, symptom-limited programme to restore movement after adhesive capsulitis (frozen shoulder).</span>
+      </a></li>
+    </ul>
+  </div>
+</section>
 
 <div class="foot">
-  <b>MSK Notes</b> &middot; 6 topics published &middot; more coming soon. Every note opens as a clean single-column read with a reading-progress bar and tap-to-define terms.
+  <b>MSK Notes</b> &middot; 30 topics across 4 papers &middot; 2 long essays. Every note opens as a clean single-column read with a reading-progress bar, tap-to-define terms, dark mode, zoom and reading mode. More topics are in preparation.
 </div>
 
 </div>
 
-<div id="pop" role="dialog" aria-live="polite"><span class="pt"></span></div>
+<div class="rtools" role="group" aria-label="Reading controls">
+  <button class="rbtn" id="tDark" type="button" title="Toggle dark mode" aria-pressed="false"><span class="ic" id="tDarkIcon">&#9789;</span><span class="lbl">Dark</span></button>
+  <span class="sep"></span>
+  <button class="rbtn" id="zOut" type="button" title="Zoom out" aria-label="Zoom out">A&minus;</button>
+  <button class="rbtn zval" id="zFit" type="button" title="Fit to screen (reset zoom)">100%</button>
+  <button class="rbtn" id="zIn" type="button" title="Zoom in" aria-label="Zoom in">A+</button>
+  <span class="sep"></span>
+  <button class="rbtn" id="tRead" type="button" title="Reading mode" aria-pressed="false"><span class="ic">&#9636;</span><span class="lbl">Reading</span></button>
+</div>
 
 <script>
-const GLOSSARY = {
-  "adhesive capsulitis":"Also called 'frozen shoulder'. A condition of uncertain cause with a significant loss of both active and passive shoulder movement, without a known intrinsic shoulder disorder.",
-  "glossary terms":"Words underlined with a dotted line carry a plain-language definition. Tap or click them and a small card explains the term in place.",
-  "exercise physiology":"The study of how the body's systems respond and adapt to physical activity and exercise.",
-  "electrophysiology":"The study of the electrical activity of nerves and muscles, and the modalities (such as TENS) that use it.",
-  "biomechanics":"The study of the mechanical forces acting on the body, and how movement is produced and controlled.",
-  "gait":"The way a person walks \u2014 the repeating cycle of steps, analysed to find faults that cause pain or injury.",
-  "outcome measures":"Standard tools (questionnaires or scores) used to measure pain, function or disability, so progress can be tracked objectively.",
-  "ergonomics":"Fitting the task, workplace and tools to the person to reduce strain and prevent musculoskeletal injury.",
-  "tendinopathy":"Painful degeneration of a tendon from overuse, without acute inflammation."
-};
-
-const pop = document.getElementById('pop');
-const pt = pop.querySelector('.pt');
-let current = null;
-function show(el){
-  const def = GLOSSARY[el.getAttribute('data-t').toLowerCase()];
-  if(!def) return;
-  pt.textContent = el.getAttribute('data-t');
-  pop.querySelector('.pt').textContent = el.getAttribute('data-t');
-  let d = pop.querySelector('.pd');
-  if(!d){ d = document.createElement('span'); d.className='pd'; pop.appendChild(d); }
-  d.textContent = def;
-  current = el; pop.classList.add('show'); position(el);
-}
-function position(el){
-  const r = el.getBoundingClientRect();
-  const sx = window.scrollX, sy = window.scrollY;
-  pop.style.left='0px'; pop.style.top='0px';
-  const pw = pop.offsetWidth, ph = pop.offsetHeight;
-  let left = Math.max(12+sx, Math.min(r.left+sx+r.width/2-pw/2, sx+document.documentElement.clientWidth-pw-12));
-  let top = r.bottom+sy+12;
-  if(r.bottom+ph+24 > window.innerHeight) top = r.top+sy-ph-12;
-  pop.style.left=left+'px'; pop.style.top=top+'px';
-}
-function hide(){ pop.classList.remove('show'); current=null; }
-document.querySelectorAll('.g').forEach(el=>{
-  el.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); if(current===el) hide(); else show(el); });
-});
-document.addEventListener('click', e=>{ if(!e.target.closest('.g') && !e.target.closest('#pop')) hide(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') hide(); });
-window.addEventListener('scroll', ()=>{ if(current) position(current); }, {passive:true});
-window.addEventListener('resize', ()=>{ if(current) position(current); });
+(function(){
+  var root=document.documentElement, body=document.body;
+  var KEY_T='msk-theme', KEY_Z='msk-zoom', KEY_R='msk-reading';
+  var savedT=localStorage.getItem(KEY_T);
+  if(savedT==='dark'||savedT==='light'){root.setAttribute('data-theme',savedT);}
+  function isDark(){
+    var t=root.getAttribute('data-theme');
+    if(t) return t==='dark';
+    return !!(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);
+  }
+  var tDark=document.getElementById('tDark');
+  function paintTheme(){
+    var d=isDark();
+    if(tDark){
+      tDark.classList.toggle('on',d);
+      tDark.setAttribute('aria-pressed',d?'true':'false');
+      var ic=document.getElementById('tDarkIcon'); if(ic) ic.innerHTML=d?'&#9789;':'&#9728;';
+      var lbl=tDark.querySelector('.lbl'); if(lbl) lbl.textContent=d?'Dark':'Light';
+    }
+  }
+  paintTheme();
+  if(tDark) tDark.addEventListener('click',function(){
+    var next=isDark()?'light':'dark';
+    root.setAttribute('data-theme',next); localStorage.setItem(KEY_T,next); paintTheme();
+  });
+  var STEPS=[0.85,1,1.15,1.3,1.5,1.75,2];
+  var z=parseFloat(localStorage.getItem(KEY_Z)); if(isNaN(z)) z=1;
+  var zval=document.getElementById('zFit');
+  function applyZoom(){ root.style.setProperty('--zoom',z); if(zval) zval.textContent=Math.round(z*100)+'%'; }
+  applyZoom();
+  function step(dir){
+    var i=STEPS.indexOf(z); if(i<0){ i=STEPS.indexOf(1); }
+    i=Math.max(0,Math.min(STEPS.length-1,i+dir)); z=STEPS[i];
+    localStorage.setItem(KEY_Z,z); applyZoom();
+  }
+  var zi=document.getElementById('zIn'), zo=document.getElementById('zOut');
+  if(zi) zi.addEventListener('click',function(){step(1);});
+  if(zo) zo.addEventListener('click',function(){step(-1);});
+  if(zval) zval.addEventListener('click',function(){z=1;localStorage.setItem(KEY_Z,1);applyZoom();});
+  var tRead=document.getElementById('tRead');
+  var r=localStorage.getItem(KEY_R)==='1';
+  function applyRead(){ body.classList.toggle('reading',r); if(tRead){tRead.classList.toggle('on',r);tRead.setAttribute('aria-pressed',r?'true':'false');} }
+  applyRead();
+  if(tRead) tRead.addEventListener('click',function(){ r=!r; localStorage.setItem(KEY_R,r?'1':'0'); applyRead(); });
+})();
 </script>
 </body>
 </html>

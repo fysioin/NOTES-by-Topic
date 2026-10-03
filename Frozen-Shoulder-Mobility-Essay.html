@@ -84,6 +84,46 @@
     .wrap{padding:24px 18px 70px}
   }
   @media print{.topbar,.progress,#pop,.next{display:none}body{background:#fff}}
+  /* ===== manual dark mode ===== */
+  html[data-theme="light"]{--paper:#f7f2e7;--paper2:#efe8d8;--card:#fdfbf5;--ink:#2b2620;--dim:#7a7268;--rule:#e3dbca;--navy:#1e3a5f;--accent:#a8621e;--hl:#f6e7a8;--key:#fbf3df;--keyline:#c58a2e}
+  html[data-theme="dark"]{--paper:#191919;--paper2:#222;--card:#222;--ink:#e8e2d6;--dim:#a49b8b;--rule:#34302a;--navy:#a9c4e0;--accent:#e0a45c;--hl:#5a4d18;--key:#262117;--keyline:#b9852f}
+  html[data-theme="light"] .topbar{background:rgba(247,242,231,.92)}
+  html[data-theme="dark"] .topbar{background:rgba(25,25,25,.92)}
+  html[data-theme="light"] #pop{background:#231f19;color:#f3ece0}
+  html[data-theme="dark"] #pop{background:#f3ece0;color:#231f19}
+  html[data-theme="light"] #pop .pt{color:#f0c98a}
+  html[data-theme="dark"] #pop .pt{color:#8a5a10}
+  html[data-theme="light"] #pop .arrow{background:#231f19}
+  html[data-theme="dark"] #pop .arrow{background:#f3ece0}
+  html[data-theme="dark"] th{background:#2b3a4a;color:#eef1f6}
+  @media (prefers-color-scheme:dark){ html:not([data-theme="light"]) th{background:#2b3a4a;color:#eef1f6} }
+  /* ===== zoom to fit the screen ===== */
+  .wrap{zoom:var(--zoom,1);max-width:calc(760px / var(--zoom,1))}
+  /* ===== reading mode ===== */
+  body.reading .topbar{display:none}
+  body.reading .wrap{max-width:calc(1000px / var(--zoom,1))}
+  /* ===== reading controls (toolbar) ===== */
+  :root{--ui-bg:#ffffff;--ui-ink:#1f2a37;--ui-line:rgba(20,30,50,.16);--ui-hover:rgba(20,30,50,.07);--ui-on:#e9f0f8}
+  @media (prefers-color-scheme:dark){:root{--ui-bg:#22242c;--ui-ink:#ece6da;--ui-line:rgba(255,255,255,.18);--ui-hover:rgba(255,255,255,.09);--ui-on:#2c3a4a}}
+  html[data-theme="dark"]{--ui-bg:#22242c;--ui-ink:#ece6da;--ui-line:rgba(255,255,255,.18);--ui-hover:rgba(255,255,255,.09);--ui-on:#2c3a4a}
+  html[data-theme="light"]{--ui-bg:#ffffff;--ui-ink:#1f2a37;--ui-line:rgba(20,30,50,.16);--ui-hover:rgba(20,30,50,.07);--ui-on:#e9f0f8}
+  .rtools{position:fixed;right:18px;bottom:18px;z-index:600;display:flex;align-items:center;gap:4px;
+    background:var(--ui-bg);border:1px solid var(--ui-line);border-radius:999px;padding:5px;box-shadow:0 10px 30px rgba(0,0,0,.22);
+    font-family:var(--sans,system-ui,sans-serif);max-width:calc(100vw - 24px)}
+  .rtools button,.rtools a.rbtn{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;cursor:pointer;
+    color:var(--ui-ink);font:inherit;font-size:12px;font-weight:600;letter-spacing:.02em;padding:8px 12px;border-radius:999px;line-height:1;text-decoration:none;white-space:nowrap}
+  .rtools button:hover,.rtools a.rbtn:hover{background:var(--ui-hover)}
+  .rtools .on{background:var(--ui-on);color:var(--ui-ink)}
+  .rtools .sep{width:1px;height:22px;background:var(--ui-line);margin:0 2px;flex-shrink:0}
+  .rtools .ic{font-size:14px;line-height:1}
+  .rtools .zval{min-width:46px;justify-content:center;font-variant-numeric:tabular-nums}
+  @media (max-width:560px){
+    .rtools{right:10px;bottom:10px;padding:4px;gap:2px}
+    .rtools button,.rtools a.rbtn{padding:8px 9px;font-size:11px}
+    .rtools .lbl{display:none}
+  }
+  @media print{.rtools{display:none}}
+
 </style>
 </head>
 <body>
@@ -415,6 +455,64 @@ function onScroll(){
 }
 window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
+</script>
+<div class="rtools" role="group" aria-label="Reading controls">
+  <a class="rbtn" href="index.html" title="Back to library"><span class="ic">&#8962;</span><span class="lbl">Home</span></a>
+  <span class="sep"></span>
+  <button class="rbtn" id="tDark" type="button" title="Toggle dark mode" aria-pressed="false"><span class="ic" id="tDarkIcon">&#9789;</span><span class="lbl">Dark</span></button>
+  <span class="sep"></span>
+  <button class="rbtn" id="zOut" type="button" title="Zoom out" aria-label="Zoom out">A&minus;</button>
+  <button class="rbtn zval" id="zFit" type="button" title="Fit to screen (reset zoom)">100%</button>
+  <button class="rbtn" id="zIn" type="button" title="Zoom in" aria-label="Zoom in">A+</button>
+  <span class="sep"></span>
+  <button class="rbtn" id="tRead" type="button" title="Reading mode" aria-pressed="false"><span class="ic">&#9636;</span><span class="lbl">Reading</span></button>
+</div>
+<script>
+(function(){
+  var root=document.documentElement, body=document.body;
+  var KEY_T='msk-theme', KEY_Z='msk-zoom', KEY_R='msk-reading';
+  var savedT=localStorage.getItem(KEY_T);
+  if(savedT==='dark'||savedT==='light'){root.setAttribute('data-theme',savedT);}
+  function isDark(){
+    var t=root.getAttribute('data-theme');
+    if(t) return t==='dark';
+    return !!(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);
+  }
+  var tDark=document.getElementById('tDark');
+  function paintTheme(){
+    var d=isDark();
+    if(tDark){
+      tDark.classList.toggle('on',d);
+      tDark.setAttribute('aria-pressed',d?'true':'false');
+      var ic=document.getElementById('tDarkIcon'); if(ic) ic.innerHTML=d?'&#9789;':'&#9728;';
+      var lbl=tDark.querySelector('.lbl'); if(lbl) lbl.textContent=d?'Dark':'Light';
+    }
+  }
+  paintTheme();
+  if(tDark) tDark.addEventListener('click',function(){
+    var next=isDark()?'light':'dark';
+    root.setAttribute('data-theme',next); localStorage.setItem(KEY_T,next); paintTheme();
+  });
+  var STEPS=[0.85,1,1.15,1.3,1.5,1.75,2];
+  var z=parseFloat(localStorage.getItem(KEY_Z)); if(isNaN(z)) z=1;
+  var zval=document.getElementById('zFit');
+  function applyZoom(){ root.style.setProperty('--zoom',z); if(zval) zval.textContent=Math.round(z*100)+'%'; }
+  applyZoom();
+  function step(dir){
+    var i=STEPS.indexOf(z); if(i<0){ i=STEPS.indexOf(1); }
+    i=Math.max(0,Math.min(STEPS.length-1,i+dir)); z=STEPS[i];
+    localStorage.setItem(KEY_Z,z); applyZoom();
+  }
+  var zi=document.getElementById('zIn'), zo=document.getElementById('zOut');
+  if(zi) zi.addEventListener('click',function(){step(1);});
+  if(zo) zo.addEventListener('click',function(){step(-1);});
+  if(zval) zval.addEventListener('click',function(){z=1;localStorage.setItem(KEY_Z,1);applyZoom();});
+  var tRead=document.getElementById('tRead');
+  var r=localStorage.getItem(KEY_R)==='1';
+  function applyRead(){ body.classList.toggle('reading',r); if(tRead){tRead.classList.toggle('on',r);tRead.setAttribute('aria-pressed',r?'true':'false');} }
+  applyRead();
+  if(tRead) tRead.addEventListener('click',function(){ r=!r; localStorage.setItem(KEY_R,r?'1':'0'); applyRead(); });
+})();
 </script>
 </body>
 </html>

@@ -137,6 +137,10 @@
   @media print{.resume{display:none!important}}
 
 </style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#a8621e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
 <div class="progress" id="prog"></div>
@@ -525,5 +529,6 @@ onScroll();
   window.addEventListener('beforeunload',save);
 })();
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
 </body>
 </html>

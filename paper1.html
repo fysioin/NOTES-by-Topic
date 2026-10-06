@@ -195,13 +195,13 @@ if(localStorage.getItem('rguhs-fit')==='1')d.classList.add('fit');}catch(e){}})(
   --ui-bg:#ffffff; --ui-ink:#1b1f24; --ui-line:rgba(20,30,50,.16); --ui-hover:rgba(20,30,50,.07); --ui-on:#e8f3f1;
 }
 html.dark, html[data-theme="dark"]{
-  --bg:#101216; --panel:#171a1f; --ink:#e7e9ed; --muted:#98a1ac;
+  --bg:#101216; --panel:#171a1f; --ink:#e7e9ed; --muted:#aab4c0;
   --line:#262a31; --line-2:#333842;
   --accent:#5eead4; --accent-ink:#5eead4; --accent-soft:#16292a;
-  --term:#aab2bd; --term-dot:#5a6470;
+  --term:#c2cad4; --term-dot:#6b7683;
   --paper:#101216; --paper2:#171a1f; --surface:#171a1f; --surface2:#1d2126;
   --surface-2:#1d2126; --border:#262a31; --rule:#262a31; --rule-strong:#333842;
-  --text:#e7e9ed; --text-dim:#98a1ac; --ink-dim:#98a1ac;
+  --text:#e7e9ed; --text-dim:#aab4c0; --ink-dim:#aab4c0; --dim:#aab4c0;
   --navy:#5eead4; --terra:#5eead4; --terra-bg:#16292a; --gold:#5eead4; --gold-bg:#16292a;
   --accent2:#5eead4; --accent-dim:#16292a; --accent2-dim:#16292a;
   --blue:#5eead4; --bar:#171a1f;
@@ -238,8 +238,11 @@ td{border-color:var(--line)!important;}
 thead th{background:var(--accent)!important;color:#fff!important;}
 html.dark thead th{color:#06231f!important;}
 /* toolbar */
-.rg-toolbar{position:sticky;top:0;z-index:900;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-  padding:9px 20px;background:var(--panel);border-bottom:1px solid var(--line);font-size:13.5px;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+.rg-toolbar{position:sticky;top:0;z-index:900;display:flex;flex-wrap:nowrap;gap:8px;align-items:center;
+  padding:9px 20px;background:var(--panel);border-bottom:1px solid var(--line);font-size:13.5px;font-family:"Segoe UI",Roboto,Arial,sans-serif;
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;}
+.rg-toolbar::-webkit-scrollbar{height:0;display:none;}
+.rg-toolbar>*{flex:0 0 auto;}
 .rg-toolbar .lbl{color:var(--muted);font-weight:600;}
 .rg-toolbar .sw{width:22px;height:22px;border-radius:50%;border:1px solid var(--line-2);cursor:pointer;padding:0;}
 .rg-toolbar .sw.yellow{background:#ffe680;} .rg-toolbar .sw.green{background:#a8e6a3;} .rg-toolbar .sw.pink{background:#ffb3d1;}
@@ -286,6 +289,10 @@ html.dark .rg-fab{color:#052622;}
 .rg-notes:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft);}
 .rg-scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1250;opacity:0;pointer-events:none;transition:opacity .22s ease;}
 .rg-scrim.open{opacity:1;pointer-events:auto;}
+.rg-toolbar .hint{display:none!important;}
+table,td{color:var(--ink)!important;}
+.stars .dim,.stars-sm .dim{color:var(--muted)!important;opacity:.55;}
+@media (max-width:520px){.rg-toolbar{gap:6px;padding:8px 12px;}.rg-toolbar .lbl{display:none;}}
 @media print{.rg-toolbar,#rg-popup,.rg-fab,.rg-drawer,.rg-scrim{display:none!important;}}
 </style></head>
 <body><div aria-label="Study tools" class="rg-toolbar" role="toolbar">
@@ -455,54 +462,9 @@ html.dark .rg-fab{color:#052622;}
   sections.forEach(s=>observer.observe(s.el));
 })();
 </script>
-<div aria-label="Reading controls" class="rtools" role="group">
-<a class="rbtn" href="index.html" title="Back to library"><span class="ic">⌂</span><span class="lbl">Home</span></a>
-<span class="sep"></span>
-<button aria-pressed="false" class="rbtn" id="tDark" title="Toggle dark mode" type="button"><span class="ic" id="tDarkIcon">☽</span><span class="lbl">Dark</span></button>
-<span class="sep"></span>
-<button aria-pressed="false" class="rbtn" id="tFit" title="Fit to page" type="button"><span class="ic">⤢</span><span class="lbl">Fit</span></button>
-<span class="sep"></span>
-<button aria-pressed="false" class="rbtn" id="tRead" title="Reading mode" type="button"><span class="ic">▤</span><span class="lbl">Reading</span></button>
-</div>
+
 <button class="resume" id="resume" title="Continue where you left off" type="button"><span class="ri">↺</span><span class="lbl">Continue reading</span><span class="rpct"></span></button>
-<script>
-(function(){
-  var root=document.documentElement, body=document.body;
-  var KEY_T='msk-theme', KEY_F='msk-fit', KEY_R='msk-reading';
-  var savedT=localStorage.getItem(KEY_T);
-  if(savedT==='dark'||savedT==='light'){root.setAttribute('data-theme',savedT);}
-  function isDark(){
-    var t=root.getAttribute('data-theme');
-    if(t) return t==='dark';
-    return !!(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);
-  }
-  var tDark=document.getElementById('tDark');
-  function paintTheme(){
-    var d=isDark();
-    if(tDark){
-      tDark.classList.toggle('on',d);
-      tDark.setAttribute('aria-pressed',d?'true':'false');
-      var ic=document.getElementById('tDarkIcon'); if(ic) ic.innerHTML=d?'&#9789;':'&#9728;';
-      var lbl=tDark.querySelector('.lbl'); if(lbl) lbl.textContent=d?'Dark':'Light';
-    }
-  }
-  paintTheme();
-  if(tDark) tDark.addEventListener('click',function(){
-    var next=isDark()?'light':'dark';
-    root.setAttribute('data-theme',next); localStorage.setItem(KEY_T,next); paintTheme();
-  });
-  var tFit=document.getElementById('tFit');
-  var f=localStorage.getItem(KEY_F)==='1';
-  function applyFit(){ body.classList.toggle('fit',f); if(tFit){tFit.classList.toggle('on',f);tFit.setAttribute('aria-pressed',f?'true':'false');} }
-  applyFit();
-  if(tFit) tFit.addEventListener('click',function(){ f=!f; localStorage.setItem(KEY_F,f?'1':'0'); applyFit(); });
-  var tRead=document.getElementById('tRead');
-  var r=localStorage.getItem(KEY_R)==='1';
-  function applyRead(){ body.classList.toggle('reading',r); if(tRead){tRead.classList.toggle('on',r);tRead.setAttribute('aria-pressed',r?'true':'false');} }
-  applyRead();
-  if(tRead) tRead.addEventListener('click',function(){ r=!r; localStorage.setItem(KEY_R,r?'1':'0'); applyRead(); });
-})();
-</script>
+
 <script>
 (function(){
   var btn=document.getElementById('resume');
